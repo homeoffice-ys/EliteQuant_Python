@@ -1,0 +1,9 @@
+strategy: MovingAverageCrossStrategy
+cash: 500000.00
+tickers:
+  - AMZN
+  - AAPL
+benchmark:            # or leave it empty
+start_date: 2010-01-01
+end_date: 2017-05-01
+output_dir: d:/workspace/elitequant_python/out

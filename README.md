@@ -44,6 +44,40 @@ Please feel free to report issues, fork the branch, and create pull requests. An
 
 No installation is needed, it's ready for use out of box. Just download the code and enjoy. 
 
+### Backtest
+
+Configure config_backtest.yaml in the source directory
+
+* ticker: ticker names that are of interest to you
+* datasource: historical data source
+* hist_dir: local history data directory
+* output_dir: output test results directory
+
+Currently it supports data source from
+
+* Quandl
+* Tushare
+* Local CSV
+
+Then run backtest_engine.py for backtesting
+
+## Live Trading
+
+ Configure source/config.yaml
+ 
+1. If you want to use interactive broker, open IB trader workstation (TWS), go to its menu File/Global Configuration/API/Settings, check "Enable ActiveX and Socket Client", uncheck "Read-Only API"
+2. In the config file, change the account id to yours; IB account id usually can be found on the top right of the TWS window.
+3. If you use CTP, change your brokerage account information and ctp addresses accordingly.
+4. create folder for log_dir and data_dir respectively. The former records runtime logs, while the later saves tick data.
+5. run live_engine.py
+
+**Interactive Brokers**
+is the most popular broker among retail traders. A lot of retail trading platform such as quantopian, quantconnect are built to support IB. If you don't have IB account but want to try it out, they provide demo account edemo with password demouser. Just download TWS trader workstation and log in with this demo account. Note that accound id changes everytime you log on to TWS with demo account so you have to change EliteQuant config file accordingly.
+
+**CTP**
+is the de-facto brokerage for Chinese futures market, including commodity futures and financial futures. They also offer free demo account [SimNow](http://simnow.com.cn/). After registration, you will get account, password, brokerid, along with market data and trading broker address. Replace them in EliteQuant config file accordingly.
+
+
 ## Development Environment
 
 Below is the environment we are using

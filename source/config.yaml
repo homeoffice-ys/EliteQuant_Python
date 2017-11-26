@@ -1,13 +1,20 @@
-# exchange_id, broker_id, trader_id, trader_pwd, order_id, order_ticker
+#------------------ System Setting --------------#
 broker: IB # IB CTP SINA, GOOGLE, PAPER
-msgq: nanomsg
-account: DU15031
+msgq: nanomsg           # nanomsg kafka, zmq
+log_dir: d:/workspace/elitequant_python/log
+data_dir: d:/workspace/elitequant_python/data
+#------------------ End of System ---------------#
+#-------------- Interactive Brokers -------------#
+account: DU15063
 ibport: 7497
+# ----------------- End of IB  ------------------#
+#----------------- Ctp --------------------------#
 ctp_broker_id: 9999
 ctp_user_id: 067425
 ctp_password: 780505
 ctp_md_address: tcp://180.168.212.228:41213
 ctp_td_address: tcp://180.168.146.187:10000
+# ---------------- End of CTP  ------------------#
 tickers:
   # - IF1707
   # - IF1709

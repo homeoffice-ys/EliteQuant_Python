@@ -6,7 +6,9 @@ import yaml
 
 from source.event.event import EventType
 from source.event.backtest_event_engine import BacktestEventEngine
-from source.data.backtest_data_feed import BacktestDataFeed
+from source.data.backtest_data_feed_quandl import BacktestDataFeedQuandl
+from source.data.backtest_data_feed_local import BacktestDataFeedLocal
+from source.data.backtest_data_feed_tushare import BacktestDataFeedTushare
 from source.data.data_board import DataBoard
 from source.brokerage.backtest_brokerage import BacktestBrokerage
 from source.position.portfolio_manager import PortfolioManager
@@ -34,15 +36,31 @@ class Backtest(object):
         start_date = config['start_date']
         send_date = config['end_date']
         strategy_name = config['strategy']
+        datasource = str(config['datasource'])
+        self._hist_dir = config['hist_dir']
         self._output_dir = config['output_dir']
 
         ## 1. data_feed
         symbols_all = self._symbols[:]   # copy
         if self._benchmark is not None:
             symbols_all.append(self._benchmark)
-        self._data_feed = BacktestDataFeed(
-            start_date=start_date, end_date=send_date
-        )
+        self._symbols = [str(s) for s in self._symbols]
+        symbols_all = [str(s) for s in symbols_all]
+
+        if (datasource.upper() == 'LOCAL'):
+            self._data_feed = BacktestDataFeedLocal(
+                hist_dir=self._hist_dir,
+                start_date=start_date, end_date=send_date
+            )
+        elif (datasource.upper() == 'TUSHARE'):
+            self._data_feed = BacktestDataFeedTushare(
+                start_date=start_date, end_date=send_date
+            )
+        else:
+            self._data_feed = BacktestDataFeedQuandl(
+                start_date=start_date, end_date=send_date
+            )
+
         self._data_feed.subscribe_market_data(symbols_all)
 
         ## 2. event engine

@@ -46,30 +46,61 @@ No installation is needed, it's ready for use out of box. Just download the code
 
 ### Backtest
 
-Configure config_backtest.yaml in the source directory
+On python side, it depends some python packages. Here are the instructions after a **clean installation** of Anaconda Python 3.6 on Windows 10 system.
 
-* ticker: ticker names that are of interest to you
-* datasource: historical data source
-* hist_dir: local history data directory
-* output_dir: output test results directory
+1. Add the unzipped folder for example d:\workspace\EliteQuant_Python to PYTHONPATH environment variable
 
-Currently it supports data source from
+![PYTHONPATH](/resource/pythonpath.PNG?raw=true "PYTHONPATH")
 
-* Quandl
-* Tushare
-* Local CSV
+2. pip install the following under command prompt cmd
 
-Then run backtest_engine.py for backtesting
+```python
+pip install quandl
+pip install pandas-datareader
+pip install tushare
+pip install pyfolio
+```
 
-## Live Trading
+3.  Configure config_backtest.yaml in the source directory
 
- Configure source/config.yaml
+    * datasource: historical data source
+    * hist_dir: local history data directory
+    * output_dir: output test results directory
+
+    Currently it supports data source from
+
+    * Quandl
+    * Tushare
+    * Local CSV
+
+4. stay in command prompt, execute
+
+```python
+cd source
+python backtest_engine.py
+```
+
+### Live Trading
+
+Live trading needs one more python package, nanomsg. Here is how to install it on Windows
+
+1. In command prompt, execute
+```python
+cd resource
+easy_install nanomsg-1.0-py3.6-win-amd64.egg
+```
+2. go to folder createed by last step, C:\Anaconda3\Lib\site-packages\nanomsg-1.0-py3.6-win-amd64.egg\nanomsg-1.0-py3.6-win-amd64.egg\, cut+paste move everything one level up, and delete the extra folder nanomsg-1.0-py3.6-win-amd64.egg.
+
+3. copy resource\nanomsg.dll to C:\Anaconda3\Lib\site-packages\nanomsg-1.0-py3.6-win-amd64.egg\
+
+4. After that, configure source/config.yaml
  
-1. If you want to use interactive broker, open IB trader workstation (TWS), go to its menu File/Global Configuration/API/Settings, check "Enable ActiveX and Socket Client", uncheck "Read-Only API"
-2. In the config file, change the account id to yours; IB account id usually can be found on the top right of the TWS window.
-3. If you use CTP, change your brokerage account information and ctp addresses accordingly.
-4. create folder for log_dir and data_dir respectively. The former records runtime logs, while the later saves tick data.
-5. run live_engine.py
+    * If you want to use interactive broker, open IB trader workstation (TWS), go to its menu File/Global Configuration/API/Settings, check "Enable ActiveX and Socket Client", uncheck "Read-Only API"
+    * In the config file, change the account id to yours; IB account id usually can be found on the top right of the TWS window.
+    * If you use CTP, change your brokerage account information and ctp addresses accordingly.
+    * create folder for log_dir and data_dir respectively. The former records runtime logs, while the later saves tick data.
+
+5. run python live_engine.py
 
 **Interactive Brokers**
 is the most popular broker among retail traders. A lot of retail trading platform such as quantopian, quantconnect are built to support IB. If you don't have IB account but want to try it out, they provide demo account edemo with password demouser. Just download TWS trader workstation and log in with this demo account. Note that accound id changes everytime you log on to TWS with demo account so you have to change EliteQuant config file accordingly.

@@ -71,7 +71,7 @@ class PerformanceManager(object):
         self._df_positions.index = self._df_positions.index.tz_localize('UTC')
         self._df_trades.index = self._df_trades.index.tz_localize('UTC')
         #pf.create_full_tear_sheet(rets, self._df_positions, self._df_trades)
-        pf.create_simple_tear_sheet(rets)
+        pf.create_simple_tear_sheet(rets,benchmark_rets=rets)
 
     def save_results(self, output_dir):
         self._equity.to_csv(output_dir + '/equity.csv')

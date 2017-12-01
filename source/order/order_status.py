@@ -5,7 +5,6 @@ from enum import Enum
 from ..event.event import *
 
 class OrderStatus(Enum):
-    NONE = -1
     NEWBORN = 0
     PENDING_SUBMIT = 1
     PENDING_CANCEL = 2
@@ -14,6 +13,10 @@ class OrderStatus(Enum):
     CANCELED = 5
     FILLED = 6
     PARTIALLY_FILLED = 8
+    API_PENDING = 9
+    API_CANCELLED = 10
+    ERROR = 11
+    NONE = 12
 
 
 class OrderFlag(Enum):

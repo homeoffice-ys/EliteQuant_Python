@@ -39,8 +39,6 @@ class OrderWindow(QtWidgets.QTableWidget):
         If order id exist, update status
         else append one row
         '''
-        print(self._orderids)
-
         if str(orderevent.broker_order_id) in self._orderids:
             row = self._orderids.index(orderevent.broker_order_id)
             self.item(row, 3).setText(OrderStatus(int(orderevent.order_status)).name)
@@ -54,7 +52,6 @@ class OrderWindow(QtWidgets.QTableWidget):
 
     def cancel_order(self,mi):
         row = mi.row()
-        order_id = self._orderids[row]
-        print(row)
+        order_id = self.item(row, 0).text()
         self._outgoingqueue.put('c|' + order_id)
 

@@ -108,7 +108,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.order_type = QtWidgets.QComboBox()
         self.order_type.addItems(['MKT', 'LMT'])
         self.order_flag = QtWidgets.QComboBox()
-        self.order_flag.addItems(['OPEN','CLOSE','CLOSETODAY','CLOSEYESTERDAY'])
+        self.order_flag.addItems(['OPEN','CLOSE','CLOSE_TODAY','CLOSE_YESTERDAY'])
         self.order_price = QtWidgets.QLineEdit()
         self.order_quantity = QtWidgets.QLineEdit()
         self.btn_order = QtWidgets.QPushButton('Place Order')

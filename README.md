@@ -84,7 +84,7 @@ python backtest_engine.py
 
 Live trading needs one more python package, nanomsg. Here is how to install it on Windows
 
-1. Unzip resource\nanomsg-1.0-py3.6-win-amd64.zip. Then in command prompt, execute
+1. In command prompt, execute
 ```python
 cd resource
 easy_install nanomsg-1.0-py3.6-win-amd64.egg
@@ -100,16 +100,13 @@ easy_install nanomsg-1.0-py3.6-win-amd64.egg
     * If you use CTP, change your brokerage account information and ctp addresses accordingly.
     * create folder for log_dir and data_dir respectively. The former records runtime logs, while the later saves tick data.
 
-5. unzip source\server\unzip_here.zip, basically for EliteQuant.pyd。
-
-6. run python live_engine.py
+5. run python live_engine.py
 
 **Interactive Brokers**
 is the most popular broker among retail traders. A lot of retail trading platform such as quantopian, quantconnect are built to support IB. If you don't have IB account but want to try it out, they provide demo account edemo with password demouser. Just download TWS trader workstation and log in with this demo account. Note that accound id changes everytime you log on to TWS with demo account so you have to change EliteQuant config file accordingly.
 
 **CTP**
 is the de-facto brokerage for Chinese futures market, including commodity futures and financial futures. They also offer free demo account [SimNow](http://simnow.com.cn/). After registration, you will get account, password, brokerid, along with market data and trading broker address. Replace them in EliteQuant config file accordingly.
-
 
 ## Development Environment
 

@@ -10,10 +10,11 @@ class EventType(Enum):
     ORDER = 2
     FILL = 3
     CANCEL = 4
-    ACCOUNT = 5
-    POSITION = 6
-    TIMER = 7
-    GENERAL = 8
+    ORDERSTATUS = 5
+    ACCOUNT = 6
+    POSITION = 7
+    TIMER = 8
+    GENERAL = 9
 
 class Event(object):
     """

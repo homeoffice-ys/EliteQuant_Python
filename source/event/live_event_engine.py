@@ -43,7 +43,8 @@ class LiveEventEngine(object):
                 if self._generalHandlers:
                     [handler(event) for handler in self._generalHandlers]
             except Empty:
-                print('Empty event queue')
+                pass
+                #print('Empty event queue')
             except Exception as e:
                 print("Error {0}".format(str(e.args[0])).encode("utf-8"))
 

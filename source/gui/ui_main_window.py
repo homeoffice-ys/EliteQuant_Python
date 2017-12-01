@@ -6,11 +6,16 @@ import sys
 import os
 import webbrowser
 import psutil
+from queue import Queue, Empty
 from PyQt5 import QtCore, QtWidgets, QtGui
 from source.event.event import EventType
+from source.order.order_status import OrderFlag
 from .ui_market_window import MarketWindow
+from .ui_order_window import OrderWindow
+from .ui_fill_window import FillWindow
 from source.event.event import GeneralEvent
 from source.strategy.mystrategy import strategy_list
+from source.strategy.strategy_manager import StrategyManager
 from source.event.live_event_engine import LiveEventEngine
 from source.event.client_mq import ClientMq
 
@@ -24,11 +29,11 @@ class MainWindow(QtWidgets.QMainWindow):
         self._widget_dict = {}
         self.central_widget = None
         self.market_window = None
-        self.order_window = None
         self.message_window = None
-        self.transaction_window = None
-        self.Position_window = None
+        self.order_window = None
+        self.fill_window = None
         self.strategy_window = None
+        self._outgoing_queue = Queue()
 
         ## 0. read config file
         self._symbols = self._config['tickers']
@@ -45,17 +50,20 @@ class MainWindow(QtWidgets.QMainWindow):
         self._events_engine = LiveEventEngine()
 
         ## 3. client mq
-        self._client_mq = ClientMq(self._events_engine)
+        self._client_mq = ClientMq(self._events_engine, self._outgoing_queue)
 
         ## 3. read strategies
-        self.strategies = strategy_list.keys()
+        #self._strategy_manager = StrategyManager(self._outgoing_queue)
+        #self.strategies = strategy_list.keys()
 
-        ## 9. wire up event handlers
+        ## 4. wire up event handlers
         self._events_engine.register_handler(EventType.TICK, self.market_window.tick_signal.emit)
+        self._events_engine.register_handler(EventType.ORDERSTATUS, self.order_window.order_status_signal.emit)
+        self._events_engine.register_handler(EventType.FILL, self.fill_window.fill_signal.emit)
         self._events_engine.register_handler(EventType.GENERAL, self.general_msg_signal.emit)
         self.general_msg_signal.connect(self.add_message)
 
-        ## 10. start
+        ## 5. start
         self._events_engine.start()
         self._client_mq.start()
 
@@ -97,11 +105,20 @@ class MainWindow(QtWidgets.QMainWindow):
         topright.setFrameShape(QtWidgets.QFrame.StyledPanel)
         place_order_layout = QtWidgets.QFormLayout()
         self.sym = QtWidgets.QLineEdit()
-        self.quantity = QtWidgets.QLineEdit()
+        self.order_type = QtWidgets.QComboBox()
+        self.order_type.addItems(['MKT', 'LMT'])
+        self.order_flag = QtWidgets.QComboBox()
+        self.order_flag.addItems(['OPEN','CLOSE','CLOSETODAY','CLOSEYESTERDAY'])
+        self.order_price = QtWidgets.QLineEdit()
+        self.order_quantity = QtWidgets.QLineEdit()
         self.btn_order = QtWidgets.QPushButton('Place Order')
         self.btn_order.clicked.connect(self.place_order)
+
         place_order_layout.addRow('Symbol', self.sym)
-        place_order_layout.addRow('Quantity', self.quantity)
+        place_order_layout.addRow('OrderType', self.order_type)
+        place_order_layout.addRow('OrderFlag', self.order_flag)
+        place_order_layout.addRow('OrderPrice', self.order_price)
+        place_order_layout.addRow('OrderQuantity', self.order_quantity)
         place_order_layout.addRow(self.btn_order)
         topright.setLayout(place_order_layout)
 
@@ -111,8 +128,8 @@ class MainWindow(QtWidgets.QMainWindow):
         tab2 = QtWidgets.QWidget()
         tab3 = QtWidgets.QWidget()
         bottomleft.addTab(tab1, "Message")
-        bottomleft.addTab(tab2, "Transaction")
-        bottomleft.addTab(tab3, "Position")
+        bottomleft.addTab(tab2, "Order")
+        bottomleft.addTab(tab3, "Fill")
 
         self.message_window = QtWidgets.QTextEdit()
         self.message_window.setReadOnly(True)
@@ -124,14 +141,14 @@ class MainWindow(QtWidgets.QMainWindow):
         tab1_layout.addWidget(self.message_window)
         tab1.setLayout(tab1_layout)
 
-        self.transaction_window = QtWidgets.QTableWidget()
+        self.order_window = OrderWindow(self._outgoing_queue)       # cancel_order outgoing nessage
         tab2_layout = QtWidgets.QVBoxLayout()
-        tab2_layout.addWidget(self.transaction_window)
+        tab2_layout.addWidget(self.order_window)
         tab2.setLayout(tab2_layout)
 
-        self.position_window = QtWidgets.QTableWidget()
+        self.fill_window = FillWindow()
         tab3_layout = QtWidgets.QVBoxLayout()
-        tab3_layout.addWidget(self.position_window)
+        tab3_layout.addWidget(self.fill_window)
         tab3.setLayout(tab3_layout)
 
         # -------------------------------- bottom right ------------------------------------------#
@@ -168,10 +185,20 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def place_order(self):
         s = str(self.sym.text())
-        q = str(self.quantity.text())
-        msg = 'o|MKT|' + s + '|' + q
+        t = str(self.order_type.currentText())
+        f = str(OrderFlag[self.order_flag.currentText()].value)
+        p = str(self.order_price.text())
+        q = str(self.order_quantity.text())
+
+        if (t == 'MKT'):
+            msg = 'o|MKT|' + s + '|' + q
+        elif (t == 'LMT'):
+            msg = 'o|LMT|' + s + '|' + q +  '|' + p + '|' +  f
+        else:
+            pass
+
         print('send msg: ' + msg)
-        self._client_mq._msg_sock.send(msg, flags=1)
+        self._outgoing_queue.put(msg)
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
         print('closing main window')

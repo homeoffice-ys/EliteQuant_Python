@@ -1,14 +1,18 @@
 # encoding: UTF-8
 from __future__ import print_function
 
+from queue import Queue, Empty
 from threading import Thread
 from nanomsg import Socket, PAIR, SUB, SUB_SUBSCRIBE, AF_SP
 from source.data.tick_event import TickEvent
+from source.order.order_status import OrderStatusEvent
+from source.order.fill_event import FillEvent
 from source.event.event import GeneralEvent
 
 class ClientMq(object):
-    def __init__(self,event_engine):
+    def __init__(self, event_engine, outgoing_quue):
         self._event_engine = event_engine
+        self._outgoing_quue = outgoing_quue
         self._tick_sock = Socket(SUB)
         self._msg_sock = Socket(PAIR)
 
@@ -39,14 +43,41 @@ class ClientMq(object):
                 if msg2 is not None and msg2.index('|') > 0:
                     if msg2[-1] == '\0':
                         msg2 = msg2[:-1]
+                    if msg2[-1] == '\x00':
+                        msg2 = msg2[:-1]
                     m = GeneralEvent()
                     m.content = msg2
-
                     self._event_engine.put(m)
+
+                    v = msg2.split('|')
+                    if v[0] == 's':
+                       m = OrderStatusEvent()
+                       m.broker_order_id = v[1]
+                       m.internal_order_id = v[1]
+                       m.order_status = v[2]
+                       self._event_engine.put(m)
+                    elif v[0] == 'f':
+                        m = FillEvent()
+                        m.broker_order_id = v[1]
+                        m.internal_order_id = v[1]
+                        m.timestamp = v[2]
+                        m.fill_price = v[3]
+                        m.fill_size = v[4]
+                        self._event_engine.put(m)
+                    else:
+                        pass
+
             except Exception as e:
                 pass
                 # print('PAIR error: '+ str(i) + '' + str(e));
                 # time.sleep(1)
+
+            try:
+                msg3 = self._outgoing_quue.get(False)
+                print(msg3)
+                self._msg_sock.send(msg3, flags=1)
+            except Exception as e:
+                pass
 
     def start(self, timer=True):
         """

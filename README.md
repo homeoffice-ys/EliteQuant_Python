@@ -24,13 +24,14 @@ Related projects include
 - [C++](https://github.com/EliteQuant/EliteQuant_Cpp)
 - [Python](https://github.com/EliteQuant/EliteQuant_Python)
 - [Matlab](https://github.com/EliteQuant/EliteQuant_Matlab)
-- [R]()
-- [C#]()
+- [R](https://github.com/EliteQuant/EliteQuant_R)
+- [C#](https://github.com/EliteQuant/EliteQuant_CSharp)
 - [Excel](https://github.com/EliteQuant/EliteQuant_Excel)
-- [Java]()
-- [Scala]()
-- [Go]()
-- [Julia]()
+- [Java](https://github.com/EliteQuant/EliteQuant_Java)
+- [Scala](https://github.com/EliteQuant/EliteQuant_Scala)
+- [Kotlin](https://github.com/EliteQuant/EliteQuant_Kotlin)
+- [Go](https://github.com/EliteQuant/EliteQuant_Go)
+- [Julia](https://github.com/EliteQuant/EliteQuant_Julia)
 
 ## Project Summary
 
@@ -101,6 +102,8 @@ easy_install nanomsg-1.0-py3.6-win-amd64.egg
     * create folder for log_dir and data_dir respectively. The former records runtime logs, while the later saves tick data.
 
 5. run python live_engine.py
+
+![Live Demo](/resource/ib_demo.gif?raw=true "Live Demo")
 
 **Interactive Brokers**
 is the most popular broker among retail traders. A lot of retail trading platform such as quantopian, quantconnect are built to support IB. If you don't have IB account but want to try it out, they provide demo account edemo with password demouser. Just download TWS trader workstation and log in with this demo account. Note that accound id changes everytime you log on to TWS with demo account so you have to change EliteQuant config file accordingly.

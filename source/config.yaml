@@ -3,7 +3,7 @@ broker: IB # IB CTP SINA, GOOGLE, PAPER
 msgq: nanomsg           # nanomsg kafka, zmq
 log_dir: d:/workspace/elitequant_python/log
 data_dir: d:/workspace/elitequant_python/data
-language: cn           # en, cn
+language: en           # en, cn
 theme: dark            # white, dark
 font_family:
 font_size:

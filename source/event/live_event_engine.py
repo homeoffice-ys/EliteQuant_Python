@@ -1,6 +1,5 @@
-# encoding: UTF-8
-from __future__ import print_function
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from queue import Queue, Empty
 from threading import Thread
 from collections import defaultdict

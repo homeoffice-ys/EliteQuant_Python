@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 class StrategyManager:
     def __int__(self, outgoingqueue):
         self._outgoing_queue = outgoingqueue

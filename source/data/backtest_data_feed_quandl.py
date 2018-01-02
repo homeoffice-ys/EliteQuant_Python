@@ -1,6 +1,5 @@
-# encoding: UTF-8
-from __future__ import print_function
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import quandl
 import pandas as pd
 import pandas_datareader.data as web

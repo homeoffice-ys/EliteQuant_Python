@@ -1,6 +1,5 @@
-# encoding: UTF-8
-from __future__ import print_function
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from ..strategy_base import StrategyBase
 from ...order.order_event import OrderEvent
 from ...order.order_type import OrderType

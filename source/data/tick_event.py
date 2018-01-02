@@ -1,5 +1,5 @@
-# encoding: UTF-8
-from __future__ import print_function
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from pandas import Timestamp
 from enum import Enum
 from ..event.event import *

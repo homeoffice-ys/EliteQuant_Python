@@ -1,20 +1,18 @@
 #!/usr/bin/env python
-from __future__ import absolute_import, division, print_function
+# -*- coding: utf-8 -*-
 import sys
 import os
 import yaml
 from PyQt5 import QtCore, QtWidgets, QtGui
-#from source.live_engine import LiveEngine
-#from source.gui.main_window import MainWindow
 from source.gui.ui_main_window import MainWindow
 import atexit
 from signal import signal, SIGINT, SIG_DFL
 from os import kill
 from multiprocessing import Process
 try:
-	from server.EliteQuant import tradingengine_    # windows
+    from server.EliteQuant import tradingengine_    # windows
 except ImportError:
-	from server.libelitequant import tradingengine_   # linux
+    from server.libelitequant import tradingengine_   # linux
 
 # https://stackoverflow.com/questions/4938723/what-is-the-correct-way-to-make-my-pyqt-application-quit-when-killed-from-the-co
 signal(SIGINT, SIG_DFL)
@@ -29,9 +27,27 @@ def main():
     except IOError:
         print("config.yaml is missing")
 
+    lang_dict = None
+    try:
+        path = os.path.abspath(os.path.dirname(__file__))
+        config_file = os.path.join(path, 'language/en/live_text.yaml')
+        if config['language'] == 'cn':
+            config_file = os.path.join(path, 'language/cn/live_text.yaml')
+        with open(os.path.expanduser(config_file), encoding='utf8') as fd:
+            lang_dict = yaml.load(fd)
+    except IOError:
+        print("live_text.yaml is missing")
+
     app = QtWidgets.QApplication(sys.argv)
-    mainWindow = MainWindow(config)
-    mainWindow.show()
+    mainWindow = MainWindow(config, lang_dict)
+    # TODO: choose font
+    # mainWindow.setFont(font_chosen)
+
+    if config['theme'] == 'dark':
+        import qdarkstyle
+        app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+
+    mainWindow.showMaximized()
 
     sys.exit(app.exec_())
 

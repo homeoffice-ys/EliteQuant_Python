@@ -1,5 +1,5 @@
-# encoding: UTF-8
-from __future__ import print_function
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from .risk_manager_base import RiskManagerBase
 
 class PassThroughRiskManager(RiskManagerBase):

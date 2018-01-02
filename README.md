@@ -60,6 +60,7 @@ pip install quandl
 pip install pandas-datareader
 pip install tushare
 pip install pyfolio
+pip install qdarkstyle
 ```
 
 3.  Configure config_backtest.yaml in the source directory

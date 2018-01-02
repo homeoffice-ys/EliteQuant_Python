@@ -1,5 +1,5 @@
-# encoding: UTF-8
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 '''
 dynamically load all strategies in the folder
 '''

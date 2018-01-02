@@ -1,6 +1,5 @@
-# encoding: UTF-8
-from __future__ import print_function
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from .brokerage_base import BrokerageBase
 from ..event.event import EventType
 from ..order.fill_event import FillEvent

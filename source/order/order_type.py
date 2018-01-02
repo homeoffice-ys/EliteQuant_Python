@@ -1,6 +1,5 @@
-# encoding: UTF-8
-from __future__ import print_function
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from enum import Enum
 
 # OrderType.MKT.name == 'MKT'  OderType.MKT.value == 0

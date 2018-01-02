@@ -1,5 +1,5 @@
-# encoding: UTF-8
-from __future__ import print_function
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import numpy as np
 import pandas as pd
 import pyfolio as pf

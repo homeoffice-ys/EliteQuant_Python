@@ -1,17 +1,31 @@
 #!/usr/bin/env python
-from __future__ import absolute_import, division, print_function
-
+# -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtWidgets, QtGui
 from ..data.tick_event import TickEvent
 
 class MarketWindow(QtWidgets.QTableWidget):
     tick_signal = QtCore.pyqtSignal(type(TickEvent()))
 
-    def __init__(self, symbols, parent=None):
+    def __init__(self, symbols, lang_dict, parent=None):
         super(MarketWindow, self).__init__(parent)
 
         self._symbols = symbols
-        self.header = ['Symbol', 'Open', 'High', 'Low', 'Bid Size', 'Bid', 'Ask', 'Ask Size', 'Last', 'Last Size']
+        self._lang_dict = lang_dict
+        self.header = [lang_dict['Symbol'],
+                       lang_dict['Name'],
+                       lang_dict['Last_Price'],
+                       lang_dict['Volume'],
+                       lang_dict['Open_Interest'],
+                       lang_dict['Bid_Size'],
+                       lang_dict['Bid'],
+                       lang_dict['Ask'],
+                       lang_dict['Ask_Size'],
+                       lang_dict['Yesterday_Close'],
+                       lang_dict['Open_Price'],
+                       lang_dict['High_Price'],
+                       lang_dict['Low_Price'],
+                       lang_dict['Time'],
+                       lang_dict['Source']]
 
         self.init_table()
         self.tick_signal.connect(self.update_table)
@@ -37,5 +51,5 @@ class MarketWindow(QtWidgets.QTableWidget):
         if tickevent.full_symbol in self._symbols:
             row = self._symbols.index(tickevent.full_symbol)
             if (float(tickevent.price) > 0.0):
-                self.item(row, 8).setText(str(tickevent.price))
+                self.item(row, 2).setText(str(tickevent.price))
 

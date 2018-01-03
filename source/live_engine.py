@@ -28,20 +28,22 @@ def main():
         print("config.yaml is missing")
 
     lang_dict = None
+    font = None
     try:
         path = os.path.abspath(os.path.dirname(__file__))
         config_file = os.path.join(path, 'language/en/live_text.yaml')
+        font = QtGui.QFont('Microsoft Sans Serif', 10)
         if config['language'] == 'cn':
             config_file = os.path.join(path, 'language/cn/live_text.yaml')
+            font = QtGui.QFont(u'微软雅黑', 10)
         with open(os.path.expanduser(config_file), encoding='utf8') as fd:
             lang_dict = yaml.load(fd)
+        lang_dict['font'] = font
     except IOError:
         print("live_text.yaml is missing")
 
     app = QtWidgets.QApplication(sys.argv)
     mainWindow = MainWindow(config, lang_dict)
-    # TODO: choose font
-    # mainWindow.setFont(font_chosen)
 
     if config['theme'] == 'dark':
         import qdarkstyle

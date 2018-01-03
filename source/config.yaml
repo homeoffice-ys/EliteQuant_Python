@@ -5,8 +5,6 @@ log_dir: d:/workspace/elitequant_python/log
 data_dir: d:/workspace/elitequant_python/data
 language: en           # en, cn
 theme: dark            # white, dark
-font_family:
-font_size:
 #------------------ End of System ---------------#
 #-------------- Interactive Brokers -------------#
 account: DU15237

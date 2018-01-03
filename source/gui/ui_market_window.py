@@ -11,6 +11,7 @@ class MarketWindow(QtWidgets.QTableWidget):
 
         self._symbols = symbols
         self._lang_dict = lang_dict
+        self.setFont(lang_dict['font'])
         self.header = [lang_dict['Symbol'],
                        lang_dict['Name'],
                        lang_dict['Last_Price'],

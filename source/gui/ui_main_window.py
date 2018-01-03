@@ -30,7 +30,7 @@ class MainWindow(QtWidgets.QMainWindow):
         ## member variables
         self._config = config
         self._lang_dict = lang_dict
-        self._font = None
+        self._font = lang_dict['font']
         self._widget_dict = {}
         self.central_widget = None
         self.market_window = None
@@ -113,6 +113,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # -------------------------------- Top right ------------------------------------------#
         topright = QtWidgets.QFrame()
         topright.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        topright.setFont(self._font)
         place_order_layout = QtWidgets.QFormLayout()
         self.sym = QtWidgets.QLineEdit()
         self.sym_name = QtWidgets.QLineEdit()
@@ -149,6 +150,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         # -------------------------------- bottom Left ------------------------------------------#
         bottomleft = QtWidgets.QTabWidget()
+        bottomleft.setFont(self._font)
         tab1 = QtWidgets.QWidget()
         tab2 = QtWidgets.QWidget()
         tab3 = QtWidgets.QWidget()
@@ -194,6 +196,7 @@ class MainWindow(QtWidgets.QMainWindow):
         # -------------------------------- bottom right ------------------------------------------#
         bottomright = QtWidgets.QFrame()
         bottomright.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        bottomright.setFont(self._font)
         strategy_manager_layout = QtWidgets.QFormLayout()
         strategy_manager_layout.addRow(QtWidgets.QLabel(self._lang_dict['Automatic']))
         bottomright.setLayout(strategy_manager_layout)

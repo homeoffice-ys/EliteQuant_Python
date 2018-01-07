@@ -7,7 +7,6 @@ import webbrowser
 import psutil
 from queue import Queue, Empty
 from PyQt5 import QtCore, QtWidgets, QtGui
-from tensorflow.python.ops.linalg_ops import self_adjoint_eig
 
 from source.event.event import EventType
 from source.order.order_status import OrderFlag

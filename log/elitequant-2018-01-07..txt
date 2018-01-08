@@ -1,0 +1,19 @@
+2018-01-07 22:33:13.041 INFO:[Brokers\Ctp\ctpdatafeed.cpp,62][EliteQuant::ctpdatafeed::connectToMarketDataFeed]Ctp datasource connecting...!
+2018-01-07 22:33:13.043 INFO:[Brokers\Ctp\ctpbrokerage.cpp,93][EliteQuant::ctpbrokerage::connectToBrokerage]Ctp brokerage connecting!
+2018-01-07 22:33:13.047 INFO:[Services\Api\apiservice.cpp,44][EliteQuant::ApiServer::run]api server started.
+2018-01-07 22:33:13.286 INFO:[Brokers\Ctp\ctpdatafeed.cpp,199][EliteQuant::ctpdatafeed::OnFrontConnected]Ctp data server is connected.
+2018-01-07 22:33:13.298 INFO:[Brokers\Ctp\ctpbrokerage.cpp,310][EliteQuant::ctpbrokerage::OnFrontConnected]Ctp broker connected; Continue to login.
+2018-01-07 22:33:20.041 INFO:[Brokers\Ctp\ctpdatafeed.cpp,168][EliteQuant::ctpdatafeed::requestUserLogin]Ctp data server logging in....
+2018-01-07 22:33:20.284 INFO:[Brokers\Ctp\ctpdatafeed.cpp,228][EliteQuant::ctpdatafeed::OnRspUserLogin]Ctp data server user logged in; TradingDay=20180108, LoginTime=, BrokerID=, UserID=.
+2018-01-07 22:33:20.302 INFO:[Brokers\Ctp\ctpbrokerage.cpp,362][EliteQuant::ctpbrokerage::OnRspUserLogin]Ctp broker server user logged in, TradingDay=20180108, LoginTime=11:33:19, BrokerID=9999, UserID=107957, frontID=3, sessionID=1486592722, MaxOrderRef=1
+.2018-01-07 22:33:20.302 INFO:[Brokers\Ctp\ctpbrokerage.cpp,230][EliteQuant::ctpbrokerage::requestBrokerageAccountInformation]Ctp broker requests brokerage account information.
+2018-01-07 22:33:20.302 INFO:[Brokers\Ctp\ctpbrokerage.cpp,286][EliteQuant::ctpbrokerage::requestOpenPositions]Ctp broker requests open positions.
+2018-01-07 22:33:20.302 INFO:[Brokers\Ctp\ctpbrokerage.cpp,298][EliteQuant::ctpbrokerage::requestSettlementInfoConfirm]Ctp broker requests settlement info comfirm.
+2018-01-07 22:33:20.534 INFO:[Brokers\Ctp\ctpdatafeed.cpp,253][EliteQuant::ctpdatafeed::OnRspSubMarketData]Ctp data server OnRspSubMarketData: InstrumentID=IC1801.
+2018-01-07 22:33:20.776 INFO:[Brokers\Ctp\ctpdatafeed.cpp,253][EliteQuant::ctpdatafeed::OnRspSubMarketData]Ctp data server OnRspSubMarketData: InstrumentID=IC1803.
+2018-01-07 22:33:20.776 INFO:[Brokers\Ctp\ctpdatafeed.cpp,253][EliteQuant::ctpdatafeed::OnRspSubMarketData]Ctp data server OnRspSubMarketData: InstrumentID=IF1801.
+2018-01-07 22:33:20.776 INFO:[Brokers\Ctp\ctpdatafeed.cpp,253][EliteQuant::ctpdatafeed::OnRspSubMarketData]Ctp data server OnRspSubMarketData: InstrumentID=al1801.
+2018-01-07 22:33:20.776 INFO:[Brokers\Ctp\ctpdatafeed.cpp,253][EliteQuant::ctpdatafeed::OnRspSubMarketData]Ctp data server OnRspSubMarketData: InstrumentID=cu1801.
+2018-01-07 22:33:21.309 INFO:[Brokers\Ctp\ctpbrokerage.cpp,491][EliteQuant::ctpbrokerage::OnRspQryTradingAccount]Ctp broker server OnRspQryTradingAccount: AccountID=107957, Available=1008739.27, PreBalance=1008739.27, Deposit=0.00, Withdraw=0.00, WithdrawQuota=1008739.27, Commission=0.00, CurrMargin=0.00, FrozenMargin=0.00, CloseProfit=0.00, PositionProfit=0.00, balance=1008739.27.
+2018-01-07 22:33:21.309 INFO:[Brokers\Ctp\ctpbrokerage.cpp,458][EliteQuant::ctpbrokerage::OnRspSettlementInfoConfirm]Ctp broker server OnRspSettlementInfoConfirm, ConfirmDate=20180108, ConfirmTime=11:33:19.
+2018-01-07 22:33:21.557 INFO:[Brokers\Ctp\ctpbrokerage.cpp,511][EliteQuant::ctpbrokerage::OnRspQryInstrument]Ctp broker server OnRspQryInstrument: InstrumentID=SR811, InstrumentName=°×É°ÌÇ811, ExchangeID=CZCE, ExchangeInstID=SR811, VolumeMultiple=10, PriceTick=1.00, UnderlyingInstrID=, ProductClass=1, ExpireDate=20181114, LongMarginRatio=0.05.

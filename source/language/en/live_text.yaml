@@ -85,3 +85,13 @@ API: API
 #------------------ End of Bottom Left ---------------#
 #------------------ Bottom Right ---------------#
 Automatic: Automatic
+SID: SID
+SName: Name
+nHoldings: nHoldings
+nTrades: nTrades
+SStatus: Status
+Start_Strat: Start Strat
+Pause_Strat: Pause Strat
+Stop_Strat: Stop Strat
+Liquidate_Strat: Liquidate Strat
+

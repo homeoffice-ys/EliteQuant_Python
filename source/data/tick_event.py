@@ -9,7 +9,7 @@ class TickType(Enum):
     TRADE = 0
     BID = 1
     ASK = 2
-
+    FULL = 3
 
 class TickEvent(Event):
     """
@@ -26,6 +26,19 @@ class TickEvent(Event):
         self.full_symbol = ''
         self.price = 0.0
         self.size = 0
+        self.depth = 1
+
+        self.bid_price_L1 = 0.0
+        self.bid_size_L1 = 0.0
+        self.ask_price_L1 = 0.0
+        self.ask_size_L1 = 0.0
+        self.open_interest = 0.0
+        self.open = 0.0
+        self.high = 0.0
+        self.low = 0.0
+        self.pre_close = 0.0
+        self.upper_limit_price = 0.0
+        self.lower_limit_price = 0.0
 
     def __str__(self):
         return "Time: %s, Ticker: %s, Type: %s,  Price: %s, Size %s" % (

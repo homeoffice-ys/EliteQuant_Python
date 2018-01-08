@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtWidgets, QtGui
-from ..data.tick_event import TickEvent
+from ..data.tick_event import TickEvent, TickType
 
 class MarketWindow(QtWidgets.QTableWidget):
     tick_signal = QtCore.pyqtSignal(type(TickEvent()))
@@ -52,5 +52,27 @@ class MarketWindow(QtWidgets.QTableWidget):
         if tickevent.full_symbol in self._symbols:
             row = self._symbols.index(tickevent.full_symbol)
             if (float(tickevent.price) > 0.0):
-                self.item(row, 2).setText(str(tickevent.price))
+                self.item(row, 1).setText(str(tickevent.full_symbol))
+                self.item(row, 13).setText(str(tickevent.timestamp))
+                if (tickevent.tick_type == TickType.BID):
+                    self.item(row, 5).setText(str(tickevent.size))
+                    self.item(row, 6).setText(str(tickevent.price))
+                elif (tickevent.tick_type == TickType.ASK):
+                    self.item(row, 7).setText(str(tickevent.price))
+                    self.item(row, 8).setText(str(tickevent.size))
+                elif (tickevent.tick_type == TickType.TRADE):
+                    self.item(row, 2).setText(str(tickevent.price))
+                    self.item(row, 3).setText(str(tickevent.size))
+                elif (tickevent.tick_type == TickType.FULL):
+                    self.item(row, 2).setText(str(tickevent.price))
+                    self.item(row, 3).setText(str(tickevent.size))
+                    self.item(row, 4).setText(str(tickevent.open_interest))
+                    self.item(row, 5).setText(str(tickevent.bid_size_L1))
+                    self.item(row, 6).setText(str(tickevent.bid_price_L1))
+                    self.item(row, 7).setText(str(tickevent.ask_price_L1))
+                    self.item(row, 8).setText(str(tickevent.ask_size_L1))
+                    self.item(row, 9).setText(str(tickevent.pre_close))
+                    self.item(row, 10).setText(str(tickevent.open))
+                    self.item(row, 11).setText(str(tickevent.high))
+                    self.item(row, 12).setText(str(tickevent.low))
 

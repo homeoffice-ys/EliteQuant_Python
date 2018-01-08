@@ -3,7 +3,7 @@
 from queue import Queue, Empty
 from threading import Thread
 from nanomsg import Socket, PAIR, SUB, SUB_SUBSCRIBE, AF_SP
-from source.data.tick_event import TickEvent
+from source.data.tick_event import TickEvent, TickType
 from source.order.order_status import OrderStatusEvent
 from source.order.fill_event import FillEvent
 from source.event.event import GeneralEvent
@@ -29,7 +29,24 @@ class ClientMq(object):
                     v = msg1.split('|')
                     k = TickEvent()
                     k.full_symbol = v[0]
+                    k.timestamp = v[1]
+                    k.tick_type = TickType(int(v[2]))
                     k.price = v[3]
+                    k.size = v[4]
+                    k.depth = v[5]
+
+                    if (k.tick_type == TickType.FULL):
+                        k.bid_price_L1 = v[6]
+                        k.bid_size_L1 = v[7]
+                        k.ask_price_L1 = v[8]
+                        k.ask_size_L1 = v[9]
+                        k.open_interest = v[10]
+                        k.open = v[11]
+                        k.high = v[12]
+                        k.low = v[13]
+                        k.pre_close = v[14]
+                        k.upper_limit_price = v[15]
+                        k.lower_limit_price = v[16]
 
                     self._event_engine.put(k)
             except Exception as e:

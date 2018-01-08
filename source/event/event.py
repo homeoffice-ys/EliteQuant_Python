@@ -12,8 +12,9 @@ class EventType(Enum):
     ORDERSTATUS = 5
     ACCOUNT = 6
     POSITION = 7
-    TIMER = 8
-    GENERAL = 9
+    CONTRACT = 8
+    TIMER = 9
+    GENERAL = 10
 
 class Event(object):
     """

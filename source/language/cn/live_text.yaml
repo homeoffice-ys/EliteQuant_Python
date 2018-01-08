@@ -85,3 +85,12 @@ API: 接口
 #------------------ End of Bottom Left ---------------#
 #------------------ Bottom Right ---------------#
 Automatic: 自动交易
+SID: 策略ID
+SName: 策略名称
+nHoldings: 持仓数量
+nTrades: 交易数
+SStatus: 状态
+Start_Strat: 开启策略
+Pause_Strat: 暂停策略
+Stop_Strat: 停止策略
+Liquidate_Strat: 清仓策略

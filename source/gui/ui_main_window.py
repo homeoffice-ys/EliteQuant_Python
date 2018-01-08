@@ -15,6 +15,7 @@ from .ui_order_window import OrderWindow
 from .ui_fill_window import FillWindow
 from .ui_position_window import PositionWindow
 from .ui_account_window import AccountWindow
+from .ui_strategy_window import StrategyWindow
 from source.event.event import GeneralEvent
 from source.strategy.mystrategy import strategy_list
 from source.strategy.strategy_manager import StrategyManager
@@ -23,11 +24,11 @@ from source.event.client_mq import ClientMq
 
 class MainWindow(QtWidgets.QMainWindow):
     general_msg_signal = QtCore.pyqtSignal(GeneralEvent)
-    def __init__(self, config, lang_dict):
+    def __init__(self, symbols, lang_dict):
         super(MainWindow, self).__init__()
 
         ## member variables
-        self._config = config
+        self._symbols = symbols
         self._lang_dict = lang_dict
         self._font = lang_dict['font']
         self._widget_dict = {}
@@ -40,9 +41,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.account_window = None
         self.strategy_window = None
         self._outgoing_queue = Queue()
-
-        # 0. read config file
-        self._symbols = self._config['tickers']
 
         # 1. set up gui windows
         self.setGeometry(50,50,600,400)
@@ -197,7 +195,20 @@ class MainWindow(QtWidgets.QMainWindow):
         bottomright.setFrameShape(QtWidgets.QFrame.StyledPanel)
         bottomright.setFont(self._font)
         strategy_manager_layout = QtWidgets.QFormLayout()
+        self.strategy_window = StrategyWindow(self._lang_dict)
+        self.btn_strat_start = QtWidgets.QPushButton(self._lang_dict['Start_Strat'])
+        self.btn_strat_pause = QtWidgets.QPushButton(self._lang_dict['Pause_Strat'])
+        self.btn_strat_stop = QtWidgets.QPushButton(self._lang_dict['Stop_Strat'])
+        self.btn_strat_liquidate = QtWidgets.QPushButton(self._lang_dict['Liquidate_Strat'])
+        btn_strat_layout = QtWidgets.QHBoxLayout()
+        btn_strat_layout.addWidget(self.btn_strat_start)
+        btn_strat_layout.addWidget(self.btn_strat_pause)
+        btn_strat_layout.addWidget(self.btn_strat_stop)
+        btn_strat_layout.addWidget(self.btn_strat_liquidate)
+
         strategy_manager_layout.addRow(QtWidgets.QLabel(self._lang_dict['Automatic']))
+        strategy_manager_layout.addRow(self.strategy_window)
+        strategy_manager_layout.addRow(btn_strat_layout)
         bottomright.setLayout(strategy_manager_layout)
 
         # --------------------------------------------------------------------------------------#
@@ -231,20 +242,22 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def place_order(self):
         s = str(self.sym.text())
-        t = str(self.order_type.currentText())
-        f = str(OrderFlag[self.order_flag.currentText()].value)
+        n = self.direction.currentIndex()
+        f = str(self.order_flag.currentIndex())
         p = str(self.order_price.text())
         q = str(self.order_quantity.text())
+        t = self.order_type.currentIndex()
 
-        if (t == 'MKT'):
-            msg = 'o|MKT|' + s + '|' + q
-        elif (t == 'LMT'):
-            msg = 'o|LMT|' + s + '|' + q +  '|' + p + '|' +  f
+        if (t == 0):
+            msg = 'o|MKT|' + s + '|' + (q if (n==0) else '-'+q)
+            print('send msg: ' + msg)
+            self._outgoing_queue.put(msg)
+        elif (t == 1):
+            msg = 'o|LMT|' + s + '|' + (q if (n==0) else '-'+q) +  '|' + p + '|' +  f
+            print('send msg: ' + msg)
+            self._outgoing_queue.put(msg)
         else:
             pass
-
-        print('send msg: ' + msg)
-        self._outgoing_queue.put(msg)
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
         print('closing main window')

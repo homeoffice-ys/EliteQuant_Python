@@ -21,11 +21,20 @@ def main():
     config = None
     try:
         path = os.path.abspath(os.path.dirname(__file__))
-        config_file = os.path.join(path, 'config.yaml')
+        config_file = os.path.join(path, 'config_server.yaml')
         with open(os.path.expanduser(config_file), encoding='utf8') as fd:
             config = yaml.load(fd)
     except IOError:
-        print("config.yaml is missing")
+        print("config_server.yaml is missing")
+    symbols = config[config['accounts'][0]]['tickers']
+
+    try:
+        path = os.path.abspath(os.path.dirname(__file__))
+        config_file = os.path.join(path, 'config_client.yaml')
+        with open(os.path.expanduser(config_file), encoding='utf8') as fd:
+            config = yaml.load(fd)
+    except IOError:
+        print("config_client.yaml is missing")
 
     lang_dict = None
     font = None
@@ -43,7 +52,7 @@ def main():
         print("live_text.yaml is missing")
 
     app = QtWidgets.QApplication(sys.argv)
-    mainWindow = MainWindow(config, lang_dict)
+    mainWindow = MainWindow(symbols, lang_dict)
 
     if config['theme'] == 'dark':
         import qdarkstyle

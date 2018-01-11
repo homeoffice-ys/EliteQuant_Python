@@ -53,12 +53,13 @@ class MainWindow(QtWidgets.QMainWindow):
         ## 2. event engine
         self._events_engine = LiveEventEngine()
 
-        ## 3. client mq
-        self._client_mq = ClientMq(self._events_engine, self._outgoing_queue)
-
+        ## 3. strategy_manager
+        self._strategy_manager = StrategyManager(self._client_config, self._events_engine)
         ## 3. read strategies
-        #self._strategy_manager = StrategyManager(self._outgoing_queue)
-        #self.strategies = strategy_list.keys()
+        # self.strategies = strategy_list.keys()
+
+        ## 4. client mq
+        self._client_mq = ClientMq(self._events_engine, self._strategy_manager,self._outgoing_queue)
 
         ## 4. wire up event handlers
         self._events_engine.register_handler(EventType.TICK, self.market_window.tick_signal.emit)

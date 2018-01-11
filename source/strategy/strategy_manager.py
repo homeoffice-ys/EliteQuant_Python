@@ -1,23 +1,28 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 class StrategyManager:
-    def __int__(self, outgoingqueue):
-        self._outgoing_queue = outgoingqueue
+    def __int__(self, client_config, event_engine, order_manager):
+        self._client_config = client_config
+        self._event_engine = event_engine
+        self._order_manager = order_manager
+        self._strategy_id = 1
+        self._strategies = []
+        self.reset()
+
+    def reset(self):
+        self._strategy_id = 1          # 0 is mannual discretionary trade
         self._strategies = []
 
     def load_strategy(self, strategy_name):
         strategy = None
-        strategy.on_start()
+        strategy.on_init()
         self._strategies.append(strategy)
 
     def send_order(self):
-        msg = 'o|MKT'
-
-        print('send message:' + msg)
-        self._outgoing_queue.put(msg)
+        pass
 
     def cancel_order(self, o):
-        self._outgoing_queue.put(o)
+        pass
 
     def on_tick(self, k):
         for s in self._strategies:

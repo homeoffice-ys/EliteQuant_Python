@@ -87,6 +87,8 @@ class Backtest(object):
             print(u'can not find strategy：%s' % strategy_name)
             return
         self._strategy = strategyClass(self._symbols, self._events_engine)
+        self._strategy.on_init()
+        self._strategy.on_start()
 
         ## 8. trade recorder
         #self._trade_recorder = ExampleTradeRecorder(output_dir)

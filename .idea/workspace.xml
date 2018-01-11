@@ -8,18 +8,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e8e2ffa-2fec-4792-91a8-436244b04f88" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/marketdata-2018-01-03.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/source/config.yaml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/server/EliteQuant.pyd" afterPath="$PROJECT_DIR$/source/server/EliteQuant.pyd" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/data/tick_event.py" afterPath="$PROJECT_DIR$/source/data/tick_event.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/event/client_mq.py" afterPath="$PROJECT_DIR$/source/event/client_mq.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/event/event.py" afterPath="$PROJECT_DIR$/source/event/event.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/elitequant-2018-01-07..txt" afterPath="$PROJECT_DIR$/log/elitequant-2018-01-07..txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/backtest_engine.py" afterPath="$PROJECT_DIR$/source/backtest_engine.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/brokerage/backtest_brokerage.py" afterPath="$PROJECT_DIR$/source/brokerage/backtest_brokerage.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/config_client.yaml" afterPath="$PROJECT_DIR$/source/config_client.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/config_server.yaml" afterPath="$PROJECT_DIR$/source/config_server.yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/data/data_board.py" afterPath="$PROJECT_DIR$/source/data/data_board.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/gui/ui_main_window.py" afterPath="$PROJECT_DIR$/source/gui/ui_main_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/gui/ui_market_window.py" afterPath="$PROJECT_DIR$/source/gui/ui_market_window.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/language/cn/live_text.yaml" afterPath="$PROJECT_DIR$/source/language/cn/live_text.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/language/en/live_text.yaml" afterPath="$PROJECT_DIR$/source/language/en/live_text.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/live_engine.py" afterPath="$PROJECT_DIR$/source/live_engine.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/order/fill_event.py" afterPath="$PROJECT_DIR$/source/order/fill_event.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/order/order_event.py" afterPath="$PROJECT_DIR$/source/order/order_event.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/order/order_manager.py" afterPath="$PROJECT_DIR$/source/order/order_manager.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/performance/performance_manager.py" afterPath="$PROJECT_DIR$/source/performance/performance_manager.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/strategy/strategy_base.py" afterPath="$PROJECT_DIR$/source/strategy/strategy_base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/strategy/strategy_manager.py" afterPath="$PROJECT_DIR$/source/strategy/strategy_manager.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,23 +39,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="client_mq.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/event/client_mq.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="48" selection-end-column="51" />
-              <folding>
-                <element signature="e#46#76#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="live_engine.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="live_engine.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/live_engine.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="78" column="4" lean-forward="false" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+            <state relative-caret-position="247">
+              <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
               <folding>
                 <element signature="e#46#56#0" expanded="true" />
               </folding>
@@ -60,37 +51,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config_server.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/config_server.yaml">
+      <file leaf-file-name="backtest_brokerage.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/brokerage/backtest_brokerage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="988">
-              <caret line="52" column="10" lean-forward="false" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
+            <state relative-caret-position="147">
+              <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ui_order_window.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/gui/ui_order_window.py">
+      <file leaf-file-name="strategy_base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/strategy/strategy_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="6" column="40" lean-forward="false" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="40" />
-              <folding>
-                <marker date="1514860014512" expanded="true" signature="1736:1838" ph="..." />
-                <marker date="1514860014512" expanded="true" signature="2611:2661" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ui_market_window.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/gui/ui_market_window.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-608">
-              <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
-              <folding>
-                <element signature="e#46#88#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="439">
+              <caret line="69" column="29" lean-forward="true" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -98,8 +74,8 @@
       <file leaf-file-name="ui_main_window.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/gui/ui_main_window.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="257" column="41" lean-forward="false" selection-start-line="257" selection-start-column="41" selection-end-line="257" selection-end-column="41" />
+            <state relative-caret-position="209">
+              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
                 <element signature="e#135#145#0" expanded="true" />
               </folding>
@@ -107,41 +83,63 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config_client.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/config_client.yaml">
+      <file leaf-file-name="data_board.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/data/data_board.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="33" lean-forward="false" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
+            <state relative-caret-position="95">
+              <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="live_text.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/language/cn/live_text.yaml">
+      <file leaf-file-name="strategy_manager.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/strategy/strategy_manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1767">
-              <caret line="93" column="11" lean-forward="false" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="11" />
+            <state relative-caret-position="247">
+              <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="live_text.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/language/en/live_text.yaml">
+      <file leaf-file-name="performance_manager.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/performance/performance_manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1805">
-              <caret line="95" column="15" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="15" />
+            <state relative-caret-position="532">
+              <caret line="30" column="47" lean-forward="false" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ui_strategy_window.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/gui/ui_strategy_window.py">
+      <file leaf-file-name="order_manager.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/order/order_manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+            <state relative-caret-position="375">
+              <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+              <folding>
+                <element signature="e#46#71#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="order_event.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/order/order_event.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fill_event.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/order/fill_event.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -151,7 +149,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>StatusThread</find>
       <find>msg_up</find>
       <find>sb_up</find>
       <find>ClientMq</find>
@@ -181,6 +178,7 @@
       <find>btn_order</find>
       <find>config</find>
       <find>place_order</find>
+      <find>OrderManager</find>
     </findStrings>
     <replaceStrings>
       <replace>fill_price</replace>
@@ -197,8 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/source/event/backtest_event_engine.py" />
-        <option value="$PROJECT_DIR$/source/event/live_event_engine.py" />
         <option value="$PROJECT_DIR$/source/gui/__init__.py" />
         <option value="$PROJECT_DIR$/source/log/__init__.py" />
         <option value="$PROJECT_DIR$/source/log/logger.py" />
@@ -206,13 +202,9 @@
         <option value="$PROJECT_DIR$/source/log/trade_recorder.py" />
         <option value="$PROJECT_DIR$/source/log/trade_recorder_base.py" />
         <option value="$PROJECT_DIR$/source/order/__init__.py" />
-        <option value="$PROJECT_DIR$/source/order/fill_event.py" />
-        <option value="$PROJECT_DIR$/source/order/order_event.py" />
-        <option value="$PROJECT_DIR$/source/order/order_manager.py" />
         <option value="$PROJECT_DIR$/source/order/order_status.py" />
         <option value="$PROJECT_DIR$/source/order/order_type.py" />
         <option value="$PROJECT_DIR$/source/performance/__init__.py" />
-        <option value="$PROJECT_DIR$/source/performance/performance_manager.py" />
         <option value="$PROJECT_DIR$/source/performance/report_manager.py" />
         <option value="$PROJECT_DIR$/source/position/__init__.py" />
         <option value="$PROJECT_DIR$/source/position/portfolio_manager.py" />
@@ -225,12 +217,9 @@
         <option value="$PROJECT_DIR$/source/strategy/mystrategy/buy_and_hold_strategy.py" />
         <option value="$PROJECT_DIR$/source/strategy/mystrategy/moving_average_cross_strategy.py" />
         <option value="$PROJECT_DIR$/source/strategy/__init__.py" />
-        <option value="$PROJECT_DIR$/source/strategy/strategy_base.py" />
-        <option value="$PROJECT_DIR$/source/strategy/strategy_manager.py" />
         <option value="$PROJECT_DIR$/source/util/__init__.py" />
         <option value="$PROJECT_DIR$/source/util/util_func.py" />
         <option value="$PROJECT_DIR$/source/__init__.py" />
-        <option value="$PROJECT_DIR$/source/backtest_engine.py" />
         <option value="$PROJECT_DIR$/source/backtest_optimization_engine.py" />
         <option value="$PROJECT_DIR$/source/gui/ui_order_window.py" />
         <option value="$PROJECT_DIR$/source/gui/ui_fill_window.py" />
@@ -243,16 +232,26 @@
         <option value="$PROJECT_DIR$/source/language/en/live_text.yaml" />
         <option value="$PROJECT_DIR$/source/language/cn/live_text.yaml" />
         <option value="$PROJECT_DIR$/source/config.yaml" />
-        <option value="$PROJECT_DIR$/source/config_client.yaml" />
-        <option value="$PROJECT_DIR$/source/gui/ui_main_window.py" />
-        <option value="$PROJECT_DIR$/source/config_server.yaml" />
         <option value="$PROJECT_DIR$/source/gui/ui_market_window.py" />
+        <option value="$PROJECT_DIR$/source/config_client.yaml" />
         <option value="$PROJECT_DIR$/source/live_engine.py" />
+        <option value="$PROJECT_DIR$/source/config_server.yaml" />
+        <option value="$PROJECT_DIR$/source/backtest_engine.py" />
+        <option value="$PROJECT_DIR$/source/strategy/strategy_base.py" />
+        <option value="$PROJECT_DIR$/source/strategy/strategy_manager.py" />
+        <option value="$PROJECT_DIR$/source/performance/performance_manager.py" />
+        <option value="$PROJECT_DIR$/source/order/order_manager.py" />
+        <option value="$PROJECT_DIR$/source/order/order_event.py" />
+        <option value="$PROJECT_DIR$/source/order/fill_event.py" />
+        <option value="$PROJECT_DIR$/source/gui/ui_main_window.py" />
+        <option value="$PROJECT_DIR$/source/data/data_board.py" />
+        <option value="$PROJECT_DIR$/source/brokerage/backtest_brokerage.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1622" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-1928" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -290,6 +289,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -307,6 +308,18 @@
               <item name="EliteQuant_Python" type="462c0819:PsiDirectoryNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
               <item name="brokerage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EliteQuant_Python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EliteQuant_Python" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EliteQuant_Python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EliteQuant_Python" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="event" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EliteQuant_Python" type="b2602c69:ProjectViewProjectNode" />
@@ -344,14 +357,24 @@
               <item name="EliteQuant_Python" type="b2602c69:ProjectViewProjectNode" />
               <item name="EliteQuant_Python" type="462c0819:PsiDirectoryNode" />
               <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="performance" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EliteQuant_Python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EliteQuant_Python" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
               <item name="position" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EliteQuant_Python" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EliteQuant_Python" type="462c0819:PsiDirectoryNode" />
+              <item name="source" type="462c0819:PsiDirectoryNode" />
+              <item name="strategy" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -637,25 +660,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24479167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42389005" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32346722" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42389005" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42917547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42917547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -681,11 +705,6 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/test_portfolio_handler.py</url>
           <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/source/event/backtest_event_engine.py</url>
-          <line>57</line>
-          <option name="timeStamp" value="125" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://C:/Anaconda3/Lib/site-packages/pyfolio/plotting.py</url>
@@ -715,41 +734,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/order/order_type.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/performance/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/performance/performance_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/performance/report_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/position/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/position/portfolio_manager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -813,13 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/strategy/strategy_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/util/util_func.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -828,13 +805,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/backtest_engine.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
@@ -862,13 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/data/data_board.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/data/data_feed_base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -890,16 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/event/backtest_event_engine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding>
-            <element signature="e#46#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/util/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -907,18 +860,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/strategy/strategy_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda3/Lib/site-packages/PyQt5/QtWidgets.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="1661" column="8" lean-forward="false" selection-start-line="1661" selection-start-column="8" selection-end-line="1661" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -971,13 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/order/order_event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/position/position.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -1017,14 +955,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/config.yaml" />
-    <entry file="file://$PROJECT_DIR$/source/config_client.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="33" lean-forward="false" selection-start-line="1" selection-start-column="33" selection-end-line="1" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/gui/ui_order_window.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1043,51 +973,154 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/config_server.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="52" column="10" lean-forward="false" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/gui/ui_main_window.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="257" column="41" lean-forward="false" selection-start-line="257" selection-start-column="41" selection-end-line="257" selection-end-column="41" />
-          <folding>
-            <element signature="e#135#145#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/event/client_mq.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="608">
           <caret line="38" column="23" lean-forward="false" selection-start-line="38" selection-start-column="23" selection-end-line="48" selection-end-column="51" />
           <folding>
-            <element signature="e#46#76#0" expanded="true" />
+            <element signature="e#46#76#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/gui/ui_market_window.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-608">
-          <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+        <state relative-caret-position="475">
+          <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
           <folding>
-            <element signature="e#46#88#0" expanded="true" />
+            <element signature="e#46#88#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/config_client.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/config_server.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="51" column="11" lean-forward="true" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
+          <folding>
+            <marker date="1515549576408" expanded="true" signature="51:96" ph="accounts: &lt;1 item&gt;" />
+            <marker date="1515549576408" expanded="true" signature="962:1337" ph="107957: &lt;9 keys&gt;" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/backtest_engine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="70" column="43" lean-forward="false" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/event/live_event_engine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1047">
+          <caret line="70" column="19" lean-forward="false" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/live_engine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="78" column="4" lean-forward="false" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+        <state relative-caret-position="247">
+          <caret line="13" column="19" lean-forward="true" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
           <folding>
             <element signature="e#46#56#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/event/backtest_event_engine.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-57">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="19" />
+          <folding>
+            <element signature="e#46#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/strategy/strategy_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="69" column="29" lean-forward="true" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/strategy/strategy_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="10" lean-forward="true" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/performance/performance_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="30" column="47" lean-forward="false" selection-start-line="30" selection-start-column="47" selection-end-line="30" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/order/order_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="28" column="12" lean-forward="true" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
+          <folding>
+            <element signature="e#46#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/order/order_event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="29" column="43" lean-forward="false" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/order/fill_event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="26" column="24" lean-forward="false" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/gui/ui_main_window.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding>
+            <element signature="e#135#145#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/data/data_board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/brokerage/backtest_brokerage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>

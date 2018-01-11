@@ -7,17 +7,31 @@ class StrategyBase(metaclass=ABCMeta):
     Base strategy class
     """
     def __init__(self, symbols, events_engine):
+        """
+        initialize trategy
+        :param symbols:
+        :param events_engine:backtest_event_engine or live_event engine that provides queue_.put()
+        """
         self._symbols = symbols
         self._events_engine = events_engine
+        self.id = -1
+        self.capital = 0.0
         self.name = ''
         self.author = ''
         self.initialized = False
+        self.active = False
 
-    def on_start(self):
+    def set_capital(self, capital):
+        self.capital = capital
+
+    def on_init(self):
         self.initialized = True
 
+    def on_start(self):
+        self.active = True
+
     def on_stop(self):
-        self.initialized = False
+        self.active = False
 
     def on_tick(self, event):
         """
@@ -57,6 +71,13 @@ class StrategyBase(metaclass=ABCMeta):
         self._events_engine.put(o)
 
     def cancel_order(self, oid):
+        pass
+
+    def cancel_all(self):
+        """
+        cancel all standing orders from this strategy id
+        :return:
+        """
         pass
 
 class Strategies(StrategyBase):

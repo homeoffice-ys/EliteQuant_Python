@@ -11,6 +11,8 @@ class PerformanceManager(object):
     """
     def __init__(self, symbols):
         self._symbols = symbols
+        self._slippage = 0.0
+        self._commission_rate = 0.0
         self.reset()
 
     # ------------------------------------ public functions -----------------------------#
@@ -21,6 +23,12 @@ class PerformanceManager(object):
         self._equity = pd.Series()      # equity line
         self._df_positions = pd.DataFrame(columns=self._symbols+['cash'])
         self._df_trades = pd.DataFrame(columns=['amount', 'price', 'symbol'])
+
+    def set_splippage(self, slippage):
+        self._slippage = slippage
+
+    def set_commission_rate(self, commission_rate):
+        self._commission_rate = commission_rate
 
     def update_performance(self, current_time, position_manager, data_board):
         if self._equity.empty:

@@ -3,6 +3,7 @@
 class DataBoard(object):
     """
     Data tracker that holds current market data info
+    TODO: jsut store last tick and last bar
     """
     def __init__(self):
         self._symbols = {}

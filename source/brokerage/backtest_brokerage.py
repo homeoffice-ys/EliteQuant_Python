@@ -8,7 +8,8 @@ from ..order.order_status import OrderStatus
 
 class BacktestBrokerage(BrokerageBase):
     """
-    Backtest brokerage: order placed will be immediately filled.
+    Backtest brokerage: market order will be immediately filled.
+            limit/stop order will be saved to _active_orders for next tick
     """
     def __init__(self, events_engine, data_board):
         """
@@ -17,6 +18,7 @@ class BacktestBrokerage(BrokerageBase):
         """
         self._events_engine = events_engine
         self._data_board = data_board
+        self._active_orders = {}
 
     # ------------------------------------ private functions -----------------------------#
     def _calculate_commission(self, full_symbol, fill_price, fill_size):
@@ -34,9 +36,26 @@ class BacktestBrokerage(BrokerageBase):
 
         return commission
 
+    def _cross_limit_order(self):
+        pass
+
+    def _cross_stop_order(self):
+        pass
+
+    def _cross_market_order(self):
+        pass
     # -------------------------------- end of private functions -----------------------------#
 
     # -------------------------------------- public functions -------------------------------#
+    def reset(self):
+        self._active_orders.clear()
+
+    def on_bar(self):
+        pass
+
+    def on_tick(self):
+        pass
+
     def place_order(self, order_event):
         """
         immediate fill, no latency or slippage

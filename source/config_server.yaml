@@ -1,7 +1,7 @@
 #------------------ System Setting --------------#
 accounts:    # accounts active for trading
-  #- 107957
-  - DU15011
+  - 107957
+  #- DU15011
 msgq: nanomsg           # nanomsg kafka, zmq
 log_dir: d:/workspace/elitequant_python/log
 data_dir: d:/workspace/elitequant_python/data
@@ -45,8 +45,15 @@ DU15146:
     - IC1801
     - IC1803
     - IF1801
-    - al1801
-    - cu1801
+    - al1802
+    - al1803
+    - cu1802
+    - cu1803
+    - i1805
+    - y1805
+    - v1805
+    - sn1805
+    - ru1805
 
 your_ctp_account2:
   broker_id: 9999

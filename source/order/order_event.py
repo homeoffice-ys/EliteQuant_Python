@@ -17,9 +17,14 @@ class OrderEvent(Event):
         self.broker_order_id = -1
         self.full_symbol = ''
         self.order_type = OrderType.MARKET
+        self.order_flag = 0
         self.order_status = OrderStatus.NONE
         self.limit_price = 0.0
         self.stop_price = 0.0
         self.size = 0         # short < 0, long > 0
         self.fill_price = 0.0
         self.fill_size = 0
+        self.order_time = None
+        self.cancel_time = None
+        self.account = ''
+        self.source = -1              # sid

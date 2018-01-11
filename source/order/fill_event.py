@@ -14,6 +14,7 @@ class FillEvent(Event):
         Initialises fill
         """
         self.event_type = EventType.FILL
+        self.internal_fill_id = -1
         self.internal_order_id = -1
         self.broker_order_id = -1
         self.timestamp = Timestamp('1900-01-01', tz='UTC')
@@ -22,6 +23,8 @@ class FillEvent(Event):
         self.fill_size = 0     # size < 0 means short order is filled
         self.exchange = ''
         self.commission = 0.0
+        self.account = ''
+        self.source = -1
 
     def to_position(self):
         """

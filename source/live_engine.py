@@ -18,21 +18,21 @@ except ImportError:
 signal(SIGINT, SIG_DFL)
 
 def main():
-    config = None
+    config_server = None
     try:
         path = os.path.abspath(os.path.dirname(__file__))
         config_file = os.path.join(path, 'config_server.yaml')
         with open(os.path.expanduser(config_file), encoding='utf8') as fd:
-            config = yaml.load(fd)
+            config_server = yaml.load(fd)
     except IOError:
         print("config_server.yaml is missing")
-    symbols = config[config['accounts'][0]]['tickers']
 
+    config_client = None
     try:
         path = os.path.abspath(os.path.dirname(__file__))
         config_file = os.path.join(path, 'config_client.yaml')
         with open(os.path.expanduser(config_file), encoding='utf8') as fd:
-            config = yaml.load(fd)
+            config_client = yaml.load(fd)
     except IOError:
         print("config_client.yaml is missing")
 
@@ -42,7 +42,7 @@ def main():
         path = os.path.abspath(os.path.dirname(__file__))
         config_file = os.path.join(path, 'language/en/live_text.yaml')
         font = QtGui.QFont('Microsoft Sans Serif', 10)
-        if config['language'] == 'cn':
+        if config_client['language'] == 'cn':
             config_file = os.path.join(path, 'language/cn/live_text.yaml')
             font = QtGui.QFont(u'微软雅黑', 10)
         with open(os.path.expanduser(config_file), encoding='utf8') as fd:
@@ -52,9 +52,9 @@ def main():
         print("live_text.yaml is missing")
 
     app = QtWidgets.QApplication(sys.argv)
-    mainWindow = MainWindow(symbols, lang_dict)
+    mainWindow = MainWindow(config_server, config_client, lang_dict)
 
-    if config['theme'] == 'dark':
+    if config_client['theme'] == 'dark':
         import qdarkstyle
         app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 

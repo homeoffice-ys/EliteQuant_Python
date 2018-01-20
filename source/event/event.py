@@ -13,8 +13,9 @@ class EventType(Enum):
     ACCOUNT = 6
     POSITION = 7
     CONTRACT = 8
-    TIMER = 9
-    GENERAL = 10
+    HISTORICAL = 9
+    TIMER = 10
+    GENERAL = 11
 
 class Event(object):
     """
@@ -30,5 +31,10 @@ class GeneralEvent(Event):
     """
     def __init__(self):
         self.event_type = EventType.GENERAL
-        self.time = Timestamp('1970-01-01', tz='UTC')
+        self.timestamp = ""
         self.content = ""
+
+    def deserialize(self, msg):
+        v = msg.split('|')
+        self.content = v[-2]
+        self.timestamp = v[-1]

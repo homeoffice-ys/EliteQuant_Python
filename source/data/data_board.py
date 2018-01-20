@@ -6,29 +6,29 @@ class DataBoard(object):
     TODO: jsut store last tick and last bar
     """
     def __init__(self):
-        self._symbols = {}
+        self._symbol_tick_dict = {}
+        self._symbol_bar_dict = {}
 
     def on_tick(self, tick):
-        if tick.full_symbol not in self._symbols:
-            self._symbols[tick.full_symbol]  = {}
+        if tick.full_symbol not in self._symbol_tick_dict:
+            self._symbol_tick_dict[tick.full_symbol]  = None
 
-        self._symbols[tick.full_symbol]['timestamp'] = tick.timestamp
-        self._symbols[tick.full_symbol]['last_price'] = tick.price
+        self._symbol_tick_dict[tick.full_symbol] = tick
 
     def on_bar(self, bar):
-        if bar.full_symbol not in self._symbols:
-            self._symbols[bar.full_symbol]  = {}
+        if bar.full_symbol not in self._symbol_bar_dict:
+            self._symbol_bar_dict[bar.full_symbol]  = None
 
-        self._symbols[bar.full_symbol]['timestamp'] = bar.bar_end_time()
-        self._symbols[bar.full_symbol]['last_price'] = bar.close_price
-        self._symbols[bar.full_symbol]['last_adj_price'] = bar.adj_close_price
+        self._symbol_bar_dict[bar.full_symbol] = bar
 
     def get_last_price(self, symbol):
         """
         Returns the most recent actual timestamp for a given ticker
         """
-        if symbol in self._symbols:
-            return self._symbols[symbol]["last_adj_price"]
+        if symbol in self._symbol_tick_dict:       # tick takes priority
+            return self._symbol_tick_dict[symbol].price
+        elif symbol in self._symbol_bar_dict:
+            return self._symbol_bar_dict[symbol].adj_close_price
         else:
             print(
                 "LastPrice for ticker %s is not found" % (symbol)
@@ -39,8 +39,10 @@ class DataBoard(object):
         """
         Returns the most recent actual timestamp for a given ticker
         """
-        if symbol in self._symbols:
-            return self._symbols[symbol]["timestamp"]
+        if symbol in self._symbol_tick_dict:         # tick takes priority
+            return self._symbol_tick_dict[symbol].timestamp
+        elif symbol in self._symbol_bar_dict:
+            return self._symbol_bar_dict[symbol].bar_end_time()
         else:
             print(
                 "Timestamp for ticker %s is not found" % (symbol)

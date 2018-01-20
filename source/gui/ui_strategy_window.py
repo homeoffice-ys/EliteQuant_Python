@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtWidgets, QtGui
-from ..order.order_event import OrderEvent
-from ..order.order_status import *
+from ..order.order_status_event import OrderStatusEvent
 
 class StrategyWindow(QtWidgets.QTableWidget):
     '''
@@ -36,5 +35,5 @@ class StrategyWindow(QtWidgets.QTableWidget):
         self.setAlternatingRowColors(True)
         self.setSortingEnabled(False)
 
-    def update_table(self, orderevent):
+    def update_table(self, order_event):
         pass

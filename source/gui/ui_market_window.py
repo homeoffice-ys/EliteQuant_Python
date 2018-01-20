@@ -51,9 +51,8 @@ class MarketWindow(QtWidgets.QTableWidget):
     def update_table(self,tickevent):
         if tickevent.full_symbol in self._symbols:
             row = self._symbols.index(tickevent.full_symbol)
-            if (float(tickevent.price) > 0.0):
-                self.item(row, 1).setText(str(tickevent.full_symbol))
-                self.item(row, 13).setText(str(tickevent.timestamp))
+            if (tickevent.price > 0.0):
+                self.item(row, 13).setText(tickevent.timestamp)
                 if (tickevent.tick_type == TickType.BID):
                     self.item(row, 5).setText(str(tickevent.size))
                     self.item(row, 6).setText(str(tickevent.price))

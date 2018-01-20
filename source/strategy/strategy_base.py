@@ -27,6 +27,13 @@ class StrategyBase(metaclass=ABCMeta):
     def on_init(self):
         self.initialized = True
 
+        # set params
+        if setting:
+            d = self.__dict__
+            for key in self.paramList:
+                if key in setting:
+                    d[key] = setting[key]
+
     def on_start(self):
         self.active = True
 
@@ -45,7 +52,7 @@ class StrategyBase(metaclass=ABCMeta):
         """
         pass
 
-    def on_order(self):
+    def on_order_status(self):
         """
         on order acknowledged
         :return:

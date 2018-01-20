@@ -8,16 +8,29 @@ class PortfolioManager(object):
         PortfolioManager is one component of PortfolioManager
         """
         self.cash = initial_cash
+        self.contracts = {}            # symbol ==> contract
         self.positions = {}
 
-    def on_position(self, symbol, price, quantity, commission=0.0):
-        """get initial position"""
-        position = Position(symbol, price, quantity)
+    def reset(self):
+        self.contracts.clear()
+        self.positions.clear()
 
-        if position.full_symbol not in self.positions:
-            self.positions[position.full_symbol] = position
+    def on_contract(self, contract):
+        if contract.full_symbol not in self.contracts:
+            self.contracts[contract.full_symbol] = contract
+            print("Contract %s information received. " % contract.full_symbol)
         else:
-            print("Symbol %s already exists in the portfolio " % position.full_symbol)
+            print("Contract %s information already exists " % contract.full_symbol)
+
+    def on_position(self, pos_event):
+        """get initial position"""
+        pos = pos_event.to_position()
+
+        if pos.full_symbol not in self.positions:
+            self.positions[pos.full_symbol] = pos
+        else:
+
+            print("Symbol %s already exists in the portfolio " % pos.full_symbol)
 
     def on_fill(self, fill_event):
         """

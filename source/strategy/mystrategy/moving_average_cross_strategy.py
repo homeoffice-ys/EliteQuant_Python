@@ -44,7 +44,7 @@ class MovingAverageCrossStrategy(StrategyBase):
                 o = OrderEvent()
                 o.full_symbol = symbol
                 o.order_type = OrderType.MARKET
-                o.size = 100
+                o.order_size = 100
                 self.place_order(o)
                 self.invested = True
             elif short_sma < long_sma and self.invested:
@@ -52,6 +52,6 @@ class MovingAverageCrossStrategy(StrategyBase):
                 o = OrderEvent()
                 o.full_symbol = symbol
                 o.order_type = OrderType.MARKET
-                o.size = -100
+                o.order_size = -100
                 self.place_order(o)
                 self.invested = False

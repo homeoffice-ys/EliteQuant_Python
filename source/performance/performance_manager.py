@@ -16,6 +16,7 @@ class PerformanceManager(object):
         self.reset()
 
     # ------------------------------------ public functions -----------------------------#
+    #  or each sid
     def reset(self):
         self._realized_pnl = 0.0
         self._unrealized_pnl = 0.0

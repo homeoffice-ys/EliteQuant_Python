@@ -14,11 +14,12 @@ class FillEvent(Event):
         Initialises fill
         """
         self.event_type = EventType.FILL
-        self.internal_fill_id = -1
-        self.internal_order_id = -1
+        self.server_order_id = -1
+        self.client_order_id = -1
         self.broker_order_id = -1
-        self.timestamp = Timestamp('1900-01-01', tz='UTC')
+        self.broker_fill_id = -1
         self.full_symbol = ''
+        self.fill_time = ''
         self.fill_price = 0.0
         self.fill_size = 0     # size < 0 means short order is filled
         self.exchange = ''
@@ -40,3 +41,16 @@ class FillEvent(Event):
 
         new_position = Position(self.full_symbol, average_price_including_commission, self.fill_size)
         return new_position
+
+    def deserialize(self, msg):
+        v = msg.split('|')
+        self.server_order_id = int(v[1])
+        self.client_order_id = int(v[2])
+        self.broker_order_id = int(v[3])
+        self.broker_fill_id = int(v[4])
+        self.fill_time = v[5]
+        self.full_symbol = v[6]
+        self.fill_price = float(v[7])
+        self.fill_size = int(v[8])
+        self.account = v[9]
+        self.api = v[10]

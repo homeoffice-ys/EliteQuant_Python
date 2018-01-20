@@ -21,7 +21,7 @@ class BuyAndHoldStrategy(StrategyBase):
                 o = OrderEvent()
                 o.full_symbol = symbol
                 o.order_type = OrderType.MKT
-                o.size = 100
+                o.order_size = 100
                 self.place_order(o)
                 self.invested = True
 

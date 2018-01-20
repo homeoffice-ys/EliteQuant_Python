@@ -64,7 +64,7 @@ class BacktestBrokerage(BrokerageBase):
         order_event.order_status = OrderStatus.FILLED
 
         fill = FillEvent()
-        fill.internal_order_id = order_event.internal_order_id
+        fill.client_order_id = order_event.client_order_id
         fill.broker_order_id = order_event.broker_order_id
         fill.timestamp = self._data_board.get_last_timestamp(order_event.full_symbol)
         fill.full_symbol = order_event.full_symbol

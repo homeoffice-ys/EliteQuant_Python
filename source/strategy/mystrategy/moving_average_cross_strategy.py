@@ -14,10 +14,10 @@ class MovingAverageCrossStrategy(StrategyBase):
     """
 
     def __init__(
-            self, symbols, events_engine,
+            self, events_engine,
             short_window=50, long_window=200
     ):
-        super(MovingAverageCrossStrategy, self).__init__(symbols, events_engine)
+        super(MovingAverageCrossStrategy, self).__init__(events_engine)
         self.short_window = short_window
         self.long_window = long_window
         self.bars = 0
@@ -25,7 +25,7 @@ class MovingAverageCrossStrategy(StrategyBase):
         self.prices = []
 
     def on_bar(self, bar_event):
-        symbol = self._symbols[0]
+        symbol = self.symbols[0]
         # Only applies SMA to first ticker
         if symbol != bar_event.full_symbol:
             return

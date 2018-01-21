@@ -9,13 +9,13 @@ class BuyAndHoldStrategy(StrategyBase):
     """
     buy on the first tick then hold to the end
     """
-    def __init__(self, symbols, events_engine):
-        super(BuyAndHoldStrategy, self).__init__(symbols, events_engine)
+    def __init__(self, events_engine):
+        super(BuyAndHoldStrategy, self).__init__(events_engine)
         self.ticks = 0
         self.invested = False
 
     def on_bar(self, event):
-        symbol = self._symbols[0]
+        symbol = self.symbols[0]
         if event.full_symbol == symbol:
             if not self.invested:
                 o = OrderEvent()

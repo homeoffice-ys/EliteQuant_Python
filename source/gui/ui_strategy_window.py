@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from PyQt5 import QtCore, QtWidgets, QtGui
-from ..order.order_status_event import OrderStatusEvent
 
 class StrategyWindow(QtWidgets.QTableWidget):
     '''
-    Order Monitor
+    Strategy Monitor
     '''
-    order_status_signal = QtCore.pyqtSignal(type(OrderStatusEvent()))
-
-    def __init__(self, lang_dict, parent=None):
+    def __init__(self, lang_dict, strategy_manager, parent=None):
         super(StrategyWindow, self).__init__(parent)
+
+        self._lang_dict = lang_dict
+        self._strategy_manager = strategy_manager
 
         self.header = [lang_dict['SID'],
                        lang_dict['SName'],
@@ -19,11 +19,7 @@ class StrategyWindow(QtWidgets.QTableWidget):
                        lang_dict['Open_PnL'],
                        lang_dict['Closed_PnL'],
                        lang_dict['Status']]
-
         self.init_table()
-
-        self._lang_dict = lang_dict
-        self.order_status_signal.connect(self.update_table)
 
     def init_table(self):
         col = len(self.header)
@@ -35,5 +31,22 @@ class StrategyWindow(QtWidgets.QTableWidget):
         self.setAlternatingRowColors(True)
         self.setSortingEnabled(False)
 
+        for key, value in self._strategy_manager._strategy_dict.items():
+            try:
+                self.insertRow(0)
+                self.setItem(0, 0, QtWidgets.QTableWidgetItem(str(key)))
+                self.setItem(0, 1, QtWidgets.QTableWidgetItem(str(value.name)))
+                self.setItem(0, 6, QtWidgets.QTableWidgetItem('active' if value.active else 'inactive'))
+            except:
+                pass
+
     def update_table(self, order_event):
         pass
+
+    def add_table(self, row, string):
+        pass
+
+    def update_status(self, row, active):
+        sid = int(self.item(row,0).text())
+        self._strategy_manager._strategy_dict[sid].active = active
+        self.setItem(row, 6, QtWidgets.QTableWidgetItem('active' if active else 'inactive'))

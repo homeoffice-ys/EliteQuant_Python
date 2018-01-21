@@ -1,38 +1,43 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from abc import ABCMeta, abstractmethod
+from datetime import datetime
 
 class StrategyBase(metaclass=ABCMeta):
     """
     Base strategy class
     """
-    def __init__(self, symbols, events_engine):
+    def __init__(self, events_engine):
         """
         initialize trategy
         :param symbols:
         :param events_engine:backtest_event_engine or live_event engine that provides queue_.put()
         """
-        self._symbols = symbols
+        self.symbols = []
         self._events_engine = events_engine
         self.id = -1
-        self.capital = 0.0
         self.name = ''
         self.author = ''
+        self.capital = 0.0
         self.initialized = False
         self.active = False
 
     def set_capital(self, capital):
         self.capital = capital
 
-    def on_init(self):
+    def set_symbols(self, symbols):
+        self.symbols = symbols
+
+    def on_init(self, params_dict=None):
         self.initialized = True
 
         # set params
-        if setting:
-            d = self.__dict__
-            for key in self.paramList:
-                if key in setting:
-                    d[key] = setting[key]
+        if params_dict is not None:
+            for key, value in params_dict.items():
+                try:
+                    self.__setattr__(key, value)
+                except:
+                    pass
 
     def on_start(self):
         self.active = True
@@ -75,7 +80,10 @@ class StrategyBase(metaclass=ABCMeta):
         pass
 
     def place_order(self, o):
-        self._events_engine.put(o)
+        o.source = self.id         # identify source
+        o.create_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+        if (self.active):
+            self._events_engine.put(o)
 
     def cancel_order(self, oid):
         pass

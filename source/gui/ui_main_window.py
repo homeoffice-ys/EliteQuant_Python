@@ -74,6 +74,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         ## 4. strategy_manager
         self._strategy_manager = StrategyManager(self._config_client, self._outgoing_request_events_engine,self._order_manager,self.portfolio_manager)
+        self._strategy_manager.load_strategy()
 
         ## 8. client mq
         self._client_mq = ClientMq(self._ui_events_engine, self._outgoing_queue)
@@ -142,6 +143,15 @@ class MainWindow(QtWidgets.QMainWindow):
                 pass
         except:
             print('place order error')
+
+    def start_strategy(self):
+        self.strategy_window.update_status(self.strategy_window.currentRow(), True)
+
+    def pause_strategy(self):
+        pass
+
+    def stop_strategy(self):
+        self.strategy_window.update_status(self.strategy_window.currentRow(), False)
 
     def closeEvent(self, a0: QtGui.QCloseEvent):
         print('closing main window')
@@ -333,10 +343,13 @@ class MainWindow(QtWidgets.QMainWindow):
         bottomright.setFrameShape(QtWidgets.QFrame.StyledPanel)
         bottomright.setFont(self._font)
         strategy_manager_layout = QtWidgets.QFormLayout()
-        self.strategy_window = StrategyWindow(self._lang_dict)
+        self.strategy_window = StrategyWindow(self._lang_dict, self._strategy_manager)
         self.btn_strat_start = QtWidgets.QPushButton(self._lang_dict['Start_Strat'])
+        self.btn_strat_start.clicked.connect(self.start_strategy)
         self.btn_strat_pause = QtWidgets.QPushButton(self._lang_dict['Pause_Strat'])
+        self.btn_strat_pause.clicked.connect(self.pause_strategy)
         self.btn_strat_stop = QtWidgets.QPushButton(self._lang_dict['Stop_Strat'])
+        self.btn_strat_stop.clicked.connect(self.stop_strategy)
         self.btn_strat_liquidate = QtWidgets.QPushButton(self._lang_dict['Liquidate_Strat'])
         btn_strat_layout = QtWidgets.QHBoxLayout()
         btn_strat_layout.addWidget(self.btn_strat_start)

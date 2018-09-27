@@ -17,16 +17,15 @@ class Position(object):
         self.api = ''
         self.account = ''
 
-    def mark_to_market(self, last_price):
+    def mark_to_market(self, last_price, multiplier):
         """
         given new market price, update the position
         """
         # if long or size > 0, pnl is positive if last_price > average_price
         # else if short or size < 0, pnl is positive if last_price < average_price
-        self.unrealized_pnl = (last_price - self.average_price) * self.size \
-                              * retrieve_multiplier_from_full_symbol(self.full_symbol)
+        self.unrealized_pnl = (last_price - self.average_price) * self.size * multiplier
 
-    def on_fill(self, fill_event):
+    def on_fill(self, fill_event, multiplier):
         """
         adjust average_price and size according to new fill/trade/transaction
         """
@@ -39,28 +38,28 @@ class Position(object):
         if self.size > 0:        # existing long
             if fill_event.fill_size > 0:        # long more
                 self.average_price = (self.average_price * self.size + fill_event.fill_price * fill_event.fill_size
-                                      + fill_event.commission / retrieve_multiplier_from_full_symbol(self.full_symbol)) \
+                                      + fill_event.commission / multiplier) \
                                      // (self.size + fill_event.fill_size)
             else:        # flat long
                 if abs(self.size) >= abs(fill_event.fill_size):   # stay long
                     self.realized_pnl += (self.average_price - fill_event.fill_price) * fill_event.fill_size \
-                                         * retrieve_multiplier_from_full_symbol(self.full_symbol) - fill_event.commission
+                                         * multiplier - fill_event.commission
                 else:   # flip to short
                     self.realized_pnl += (fill_event.fill_size - self.average_price) * self.size \
-                                         * retrieve_multiplier_from_full_symbol(self.full_symbol) - fill_event.commission
+                                         * multiplier - fill_event.commission
                     self.average_price = fill_event.fill_price
         else:        # existing short
             if fill_event.fill_size < 0:         # short more
                 self.average_price = (self.average_price * self.size + fill_event.fill_price * fill_event.fill_size
-                                      + fill_event.commission / retrieve_multiplier_from_full_symbol(self.full_symbol)) \
+                                      + fill_event.commission / multiplier) \
                                      // (self.size + fill_event.fill_size)
             else:          # flat short
                 if abs(self.size) >= abs(fill_event.fill_size):  # stay short
                     self.realized_pnl += (self.average_price - fill_event.fill_price) * fill_event.fill_size \
-                                         * retrieve_multiplier_from_full_symbol(self.full_symbol) - fill_event.commission
+                                         * multiplier - fill_event.commission
                 else:   # flip to long
                     self.realized_pnl += (fill_event.fill_size - self.average_price) * self.size \
-                                         * retrieve_multiplier_from_full_symbol(self.full_symbol) - fill_event.commission
+                                         * multiplier - fill_event.commission
                     self.average_price = fill_event.fill_price
 
         self.size += fill_event.fill_size

@@ -1,15 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import re
 from .position import Position
 
 class PortfolioManager(object):
-    def __init__(self, initial_cash):
+    def __init__(self, initial_cash, fvp=None):
         """
         PortfolioManager is one component of PortfolioManager
         """
         self.cash = initial_cash
         self.contracts = {}            # symbol ==> contract
         self.positions = {}
+        self._df_fvp = fvp
 
     def reset(self):
         self.contracts.clear()
@@ -38,14 +40,38 @@ class PortfolioManager(object):
         TODO: consider margin
         """
         # sell will get cash back
-        self.cash -= fill_event.fill_size * fill_event.fill_price + fill_event.commission
+        m = 1
+        if self._df_fvp is not None:
+            try:
+                sym = fill_event.full_symbol
+                if '|' in sym:
+                    ss = sym.split('|')
+                    match = re.match(r"([a-z ]+)([0-9]+)?", ss[0], re.I)
+                    sym = match.groups()[0]
+
+                m = self._df_fvp.loc[sym, 'FVP']
+            except:
+                m = 1
+        self.cash -= (fill_event.fill_size * fill_event.fill_price)*m + fill_event.commission
 
         if fill_event.full_symbol in self.positions:      # adjust existing position
-            self.positions[fill_event.full_symbol].on_fill(fill_event)
+            self.positions[fill_event.full_symbol].on_fill(fill_event, m)
         else:
             self.positions[fill_event.full_symbol] = fill_event.to_position()
 
     def mark_to_market(self, current_time, symbol, last_price):
         #for sym, pos in self.positions.items():
+        m = 1
+        if self._df_fvp is not None:
+            try:
+                sym = symbol
+                if '|' in sym:
+                    ss = sym.split('|')
+                    match = re.match(r"([a-z ]+)([0-9]+)?", ss[0], re.I)
+                    sym = match.groups()[0]
+
+                m = self._df_fvp.loc[sym, 'FVP']
+            except:
+                m = 1
         if symbol in self.positions:
-            self.positions[symbol].mark_to_market(last_price)
+            self.positions[symbol].mark_to_market(last_price, m)

@@ -7,7 +7,7 @@ class StrategyBase(metaclass=ABCMeta):
     """
     Base strategy class
     """
-    def __init__(self, events_engine):
+    def __init__(self, events_engine, data_board=None):
         """
         initialize trategy
         :param symbols:
@@ -15,6 +15,7 @@ class StrategyBase(metaclass=ABCMeta):
         """
         self.symbols = []
         self._events_engine = events_engine
+        self._data_board = data_board
         self.id = -1
         self.name = ''
         self.author = ''

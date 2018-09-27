@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from pandas import Timestamp
 import os
+import numpy as np
+import pandas as pd
+from datetime import datetime, date
 import yaml
 
 from source.event.event import EventType
 from source.event.backtest_event_engine import BacktestEventEngine
 from source.data.backtest_data_feed_quandl import BacktestDataFeedQuandl
-from source.data.backtest_data_feed_local import BacktestDataFeedLocal
-from source.data.backtest_data_feed_tushare import BacktestDataFeedTushare
+from source.data.backtest_data_feed_local_single_symbol import BacktestDataFeedLocalSingleSymbol
+from source.data.backtest_data_feed_local_multiple_symbols import BacktestDataFeedLocalMultipleSymbols
 from source.data.data_board import DataBoard
 from source.brokerage.backtest_brokerage import BacktestBrokerage
 from source.position.portfolio_manager import PortfolioManager
@@ -16,7 +18,7 @@ from source.performance.performance_manager import PerformanceManager
 from source.risk.risk_manager import PassThroughRiskManager
 from source.strategy.mystrategy import strategy_list
 
-class Backtest(object):
+class BacktestEngine(object):
     """
     Event driven backtest engine
     """
@@ -25,19 +27,23 @@ class Backtest(object):
         1. read in configs
         2. Set up backtest event engine
         """
-        self._current_time = Timestamp('1900-01-01')
+        self._current_time = None
 
         ## 0. read in configs
         self._initial_cash = config['cash']
-        self._symbols = config['tickers']
+        self._symbols = config['symbols']
         self._benchmark = config['benchmark']
         #self.start_date = datetime.datetime.strptime(config['start_date'], "%Y-%m-%d")
         #self.end_date = datetime.datetime.strptime(config['end_date'], "%Y-%m-%d")
         start_date = config['start_date']
         send_date = config['end_date']
+        params = config['params']
         strategy_name = config['strategy']
         datasource = str(config['datasource'])
+        batch_tag = config['batch_tag']
+        root_multiplier = config['root_multiplier']
         self._hist_dir = config['hist_dir']
+        self._fvp_file = config['fvp_file']
         self._output_dir = config['output_dir']
 
         ## 1. data_feed
@@ -45,38 +51,46 @@ class Backtest(object):
         if self._benchmark is not None:
             symbols_all.append(self._benchmark)
         self._symbols = [str(s) for s in self._symbols]
-        symbols_all = [str(s) for s in symbols_all]
+        symbols_all = set([str(s) for s in symbols_all])  # remove duplicates
 
         if (datasource.upper() == 'LOCAL'):
-            self._data_feed = BacktestDataFeedLocal(
+            print('Using local single symbol data feed')
+            self._data_feed = BacktestDataFeedLocalSingleSymbol(
                 hist_dir=self._hist_dir,
                 start_date=start_date, end_date=send_date
             )
-        elif (datasource.upper() == 'TUSHARE'):
-            self._data_feed = BacktestDataFeedTushare(
+        elif (datasource.upper() == 'MULTI_LOCAL'):
+            print('Using local multiple symbol data feed')
+            self._data_feed = BacktestDataFeedLocalMultipleSymbols(
+                hist_dir=self._hist_dir,
                 start_date=start_date, end_date=send_date
             )
         else:
+            print('Using Quandl data feed')
             self._data_feed = BacktestDataFeedQuandl(
                 start_date=start_date, end_date=send_date
             )
 
-        self._data_feed.subscribe_market_data(symbols_all)
+        self._data_feed.subscribe_market_data(self._symbols)         # not symbols_all
 
         ## 2. event engine
         self._events_engine = BacktestEventEngine(self._data_feed)
 
         ## 3. brokerage
-        self._data_board = DataBoard()
+        self._data_board = DataBoard(hist_dir=self._hist_dir, syms=symbols_all)
         self._backtest_brokerage = BacktestBrokerage(
             self._events_engine, self._data_board
         )
 
         ## 4. portfolio_manager
-        self._portfolio_manager = PortfolioManager(self._initial_cash)
+        self._df_fvp = None
+        if self._fvp_file is not None:
+            self._df_fvp = pd.read_csv(self._hist_dir+self._fvp_file, index_col=0)
+
+        self._portfolio_manager = PortfolioManager(self._initial_cash, self._df_fvp)
 
         ## 5. performance_manager
-        self._performance_manager = PerformanceManager(symbols_all)
+        self._performance_manager = PerformanceManager(self._symbols, self._benchmark, batch_tag, root_multiplier, self._df_fvp)
 
         ## 6. risk_manager
         self._risk_manager = PassThroughRiskManager()
@@ -86,8 +100,12 @@ class Backtest(object):
         if not strategyClass:
             print(u'can not find strategy：%s' % strategy_name)
             return
-        self._strategy = strategyClass(self._events_engine)
-        self._strategy.on_init()
+        else:
+            print(u'backtesting strategy：%s' % strategy_name)
+        self._strategy = strategyClass(self._events_engine, self._data_board)
+        self._strategy.set_symbols(self._symbols)
+        self._strategy.set_capital(self._initial_cash)
+        self._strategy.on_init(params)
         self._strategy.on_start()
 
         ## 8. trade recorder
@@ -128,14 +146,16 @@ class Backtest(object):
     # -------------------------------- end of private functions -----------------------------#
 
     # -------------------------------------- public functions -------------------------------#
-    def run(self):
+    def run(self, tear_sheet=True):
         """
         Run backtest
         """
         self._events_engine.run()
         self._performance_manager.update_final_performance(self._current_time, self._portfolio_manager, self._data_board)
         self._performance_manager.save_results(self._output_dir)
-        self._performance_manager.create_tearsheet()
+        if tear_sheet:
+            self._performance_manager.create_tearsheet()
+        return self._performance_manager.caculate_performance()
 
     # ------------------------------- end of public functions -----------------------------#
 
@@ -143,11 +163,21 @@ if __name__ == '__main__':
     config = None
     try:
         path = os.path.abspath(os.path.dirname(__file__))
-        config_file = os.path.join(path, 'config_backtest.yaml')
+        # config_file = os.path.join(path, 'config_backtest_buy_hold.yaml')
+        #config_file = os.path.join(path, 'config_backtest_moving_average_cross.yaml')
+        # config_file = os.path.join(path, 'config_backtest_simple_linear_scaling.yaml')
+        config_file = os.path.join(path, 'config_backtest_mean_reversion_spread.yaml')
         with open(os.path.expanduser(config_file)) as fd:
             config = yaml.load(fd)
     except IOError:
         print("config.yaml is missing")
 
-    backtest = Backtest(config)
-    results = backtest.run()
+    backtest_engine = BacktestEngine(config)
+    results, results_dd, monthly_ret_table, ann_ret_df = backtest_engine.run()
+    if results is None:
+        print('Empty Strategy')
+    else:
+        print(results)
+        print(results_dd)
+        print(monthly_ret_table)
+        print(ann_ret_df)

@@ -10,8 +10,8 @@ class OrderPerIntervalStrategy(StrategyBase):
     """
     buy on the first tick then hold to the end
     """
-    def __init__(self, events_engine):
-        super(OrderPerIntervalStrategy, self).__init__(events_engine)
+    def __init__(self, events_engine, data_board):
+        super(OrderPerIntervalStrategy, self).__init__(events_engine, data_board)
         self.ticks = 0
         self.tick_trigger_threshold = 10
         self.sign = 1

@@ -15,7 +15,7 @@ y = 1.0 + 2.0 * x +  e          # a = 1.0; b = 2.0; y = a + b*x
 sigma_e = 3.0
 
 # initial value
-beta_0_0 = np.array([[0.5], [0.5]])         # 2x1 array
+theta_0_0 = np.array([[0.5], [0.5]])         # 2x1 array
 W = np.array([[0.5, 0], [0, 0.5]])          # 2x2 array
 P_0_0 = W
 
@@ -24,7 +24,7 @@ for k in range(250):          # 250 pairs
     print('step {}'.format(k))
     # A-Priori prediction
     # first step, let k = 1
-    beta_1_0 = beta_0_0
+    theta_1_0 = theta_0_0
     P_1_0 = P_0_0 + W
 
     # After observing two points (x1, y1) and (x2, y2)
@@ -34,7 +34,7 @@ for k in range(250):          # 250 pairs
     y2 = y[2*k+1]
     y_1 = np.array([y1, y2]).reshape(2,1)
     F_1 = np.array([[1, x1], [1, x2]])
-    y_1_tilde = y_1 - np.dot(F_1, beta_1_0)
+    y_1_tilde = y_1 - np.dot(F_1, theta_1_0)
 
     # residual covariance
     V_1 = np.array([[sigma_e, 0], [0, sigma_e]])
@@ -44,12 +44,12 @@ for k in range(250):          # 250 pairs
     K_1 = np.dot(np.dot(P_1_0, np.transpose(F_1)), np.linalg.inv(S_1))
 
     # Posterior
-    beta_1_1 = beta_1_0 + np.dot(K_1, y_1_tilde)
+    theta_1_1 = theta_1_0 + np.dot(K_1, y_1_tilde)
     P_1_1 = np.eye(2) - np.dot(np.dot(K_1, F_1), P_1_0)
 
     # assign for next iteration
-    results[k, :] = beta_1_1.reshape(2,)
-    beta_0_0 = beta_1_1
+    results[k, :] = theta_1_1.reshape(2,)
+    theta_0_0 = theta_1_1
     P_0_0 = P_1_1
 
 print(results.mean(axis=0))     # intercept: 0.6694;   slope: 1.9926

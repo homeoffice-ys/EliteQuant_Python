@@ -27,15 +27,13 @@ class MovingAverageCrossStrategy(StrategyBase):
     def on_bar(self, bar_event):
         print('Processing {}'.format(bar_event.bar_start_time))
         symbol = bar_event.full_symbol
-        # Add latest adjusted closing price to price list
-        self.prices.append(bar_event.adj_close_price)
-        self.bars += 1
+        hist_price = self._data_board.get_hist_price(symbol, bar_event.bar_start_time)
 
         # wait for enough bars
-        if self.bars >= self.long_window:
+        if hist_price.shape[0] >= self.long_window:
             # Calculate the simple moving averages
-            short_sma = np.mean(self.prices[-self.short_window:])
-            long_sma = np.mean(self.prices[-self.long_window:])
+            short_sma = np.mean(hist_price['Close'][-self.short_window:])
+            long_sma = np.mean(hist_price['Close'][-self.long_window:])
             # Trading signals based on moving average cross
             if short_sma > long_sma and not self.invested:
                 print("Long: %s, short_sma %s, long_sma %s" % ( bar_event.bar_end_time(), str(short_sma), str(long_sma) ))

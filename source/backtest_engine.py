@@ -153,9 +153,8 @@ class BacktestEngine(object):
         self._events_engine.run()
         self._performance_manager.update_final_performance(self._current_time, self._portfolio_manager, self._data_board)
         self._performance_manager.save_results(self._output_dir)
-        if tear_sheet:
-            self._performance_manager.create_tearsheet()
-        return self._performance_manager.caculate_performance()
+
+        return self._performance_manager.caculate_performance(tear_sheet)
 
     # ------------------------------- end of public functions -----------------------------#
 
@@ -164,7 +163,7 @@ if __name__ == '__main__':
     try:
         path = os.path.abspath(os.path.dirname(__file__))
         # config_file = os.path.join(path, 'config_backtest_buy_hold.yaml')
-        #config_file = os.path.join(path, 'config_backtest_moving_average_cross.yaml')
+        # config_file = os.path.join(path, 'config_backtest_moving_average_cross.yaml')
         # config_file = os.path.join(path, 'config_backtest_simple_linear_scaling.yaml')
         config_file = os.path.join(path, 'config_backtest_mean_reversion_spread.yaml')
         with open(os.path.expanduser(config_file)) as fd:

@@ -9,6 +9,9 @@ class PortfolioManager(object):
         PortfolioManager is one component of PortfolioManager
         """
         self.cash = initial_cash
+        # current total value after market to market, before trades from strategy.
+        # After-trades calculated in performanace manager
+        self.current_total_capital = initial_cash
         self.contracts = {}            # symbol ==> contract
         self.positions = {}
         self._df_fvp = fvp
@@ -26,6 +29,7 @@ class PortfolioManager(object):
 
     def on_position(self, pos_event):
         """get initial position"""
+        # TODO, current_total_capital accounts for initial positions
         pos = pos_event.to_position()
 
         if pos.full_symbol not in self.positions:
@@ -53,15 +57,17 @@ class PortfolioManager(object):
             except:
                 m = 1
         self.cash -= (fill_event.fill_size * fill_event.fill_price)*m + fill_event.commission
+        self.current_total_capital -= fill_event.commission                   # commission is a cost
 
         if fill_event.full_symbol in self.positions:      # adjust existing position
             self.positions[fill_event.full_symbol].on_fill(fill_event, m)
         else:
             self.positions[fill_event.full_symbol] = fill_event.to_position()
 
-    def mark_to_market(self, current_time, symbol, last_price):
+    def mark_to_market(self, current_time, symbol, last_price, data_board):
         #for sym, pos in self.positions.items():
         m = 1
+        sym = symbol
         if self._df_fvp is not None:
             try:
                 sym = symbol
@@ -74,4 +80,7 @@ class PortfolioManager(object):
             except:
                 m = 1
         if symbol in self.positions:
+            # TODO: for place holder case, nothing updated
             self.positions[symbol].mark_to_market(last_price, m)
+            # data board not updated yet
+            self.current_total_capital += self.positions[symbol].size * (last_price - data_board.get_last_price(sym)) * m

@@ -3,8 +3,8 @@ cash: 5000.00
 symbols:
   - USDCAD Curncy
 root_multiplier:
-benchmark: SPX Index           # or leave it empty
-start_date: 2010-01-01
+benchmark: USDCAD Curncy           # or leave it empty
+start_date: 2015-01-01
 end_date: 2017-05-01
 params:
   lookback_window: 200

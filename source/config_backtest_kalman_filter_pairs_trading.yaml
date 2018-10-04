@@ -1,4 +1,4 @@
-strategy: MeanReversionSpreadStrategy
+strategy: KalmanFilterPairsTradingStrategy
 cash: 50000.00
 symbols:
   - EWA US Equity         # list

@@ -38,6 +38,7 @@ class MeanReversionSpreadStrategy(StrategyBase):
 
         self._lm_model.fit(AB.iloc[-self.lookback_window:, 0].values.reshape(-1, 1), AB.iloc[-self.lookback_window:, 1].values.reshape(-1, 1))   # B ~ A
         coeff = self._lm_model.coef_                        # B ~ coeff * A
+        #print(coeff[0][0])
         spread = self._lm_model.predict(AB.iloc[-self.lookback_window:, 0].values.reshape(-1, 1)) - AB.iloc[-self.lookback_window:, 1].values.reshape(-1, 1)   # coeff*A - B
         spread = spread.reshape(-1,)
         rolling_avg = np.average(spread)

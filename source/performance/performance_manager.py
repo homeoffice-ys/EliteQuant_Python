@@ -76,6 +76,7 @@ class PerformanceManager(object):
                     except:
                         m = 1
 
+                # data_board hasn't been updated
                 equity += pos.size * data_board.get_last_price(sym) * m
                 if '|' in sym:
                     ss = sym.split('|')

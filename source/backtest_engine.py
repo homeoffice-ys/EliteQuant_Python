@@ -123,7 +123,7 @@ class BacktestEngine(object):
 
         # performance update goes before position updates because it updates previous day performance
         self._performance_manager.update_performance(self._current_time, self._portfolio_manager, self._data_board)
-        self._portfolio_manager.mark_to_market(self._current_time, tick_event.full_symbol, tick_event.price)
+        self._portfolio_manager.mark_to_market(self._current_time, tick_event.full_symbol, tick_event.price, self._data_board)
         self._data_board.on_tick(tick_event)
         self._strategy.on_tick(tick_event)
 
@@ -132,7 +132,7 @@ class BacktestEngine(object):
 
         # performance update goes before position updates because it updates previous day
         self._performance_manager.update_performance(self._current_time, self._portfolio_manager, self._data_board)
-        self._portfolio_manager.mark_to_market(self._current_time, bar_event.full_symbol, bar_event.adj_close_price)
+        self._portfolio_manager.mark_to_market(self._current_time, bar_event.full_symbol, bar_event.adj_close_price, self._data_board)
         self._data_board.on_bar(bar_event)
         self._strategy.on_bar(bar_event)
 
@@ -165,8 +165,8 @@ if __name__ == '__main__':
         # config_file = os.path.join(path, 'config_backtest_buy_hold.yaml')
         # config_file = os.path.join(path, 'config_backtest_moving_average_cross.yaml')
         # config_file = os.path.join(path, 'config_backtest_simple_linear_scaling.yaml')
-        # config_file = os.path.join(path, 'config_backtest_mean_reversion_spread.yaml')
-        config_file = os.path.join(path, 'config_backtest_kalman_filter_pairs_trading.yaml')
+        config_file = os.path.join(path, 'config_backtest_mean_reversion_spread.yaml')
+        # config_file = os.path.join(path, 'config_backtest_kalman_filter_pairs_trading.yaml')
         with open(os.path.expanduser(config_file)) as fd:
             config = yaml.load(fd)
     except IOError:

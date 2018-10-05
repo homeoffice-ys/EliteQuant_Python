@@ -35,6 +35,8 @@ plt.ylabel('EWC')
 plt.show()
 
 # ------------------------------------------- Kalman Filter --------------------------------------------------------#
+state_cov_multiplier = np.power(0.01, 2)       # 0.1: spread_std=2.2, cov=16  ==> 0.01: 0.22, 0.16
+observation_cov = 0.001
 # observation matrix F is 2-dimensional, containing sym_a price and 1
 # there are data.shape[0] observations
 obs_mat_F = np.transpose(np.vstack([data[sym_a].values, np.ones(data.shape[0])])).reshape(-1, 1, 2)
@@ -45,8 +47,8 @@ kf = KalmanFilter(n_dim_obs=1,                                      # y is 1-dim
                   initial_state_covariance=np.ones((2, 2)),         # initial cov matrix between intercept and slope P0|0
                   transition_matrices=np.eye(2),                    # G, constant
                   observation_matrices=obs_mat_F,                   # F, depends on x
-                  observation_covariance=1,                         # v_t, constant
-                  transition_covariance= np.eye(2))                 # w_t, constant
+                  observation_covariance=observation_cov,                   # v_t, constant
+                  transition_covariance= np.eye(2)*state_cov_multiplier)           # w_t, constant
 
 state_means, state_covs = kf.filter(data[sym_b])                 # observes sym_b price
 beta_kf = pd.DataFrame({'Slope': state_means[:, 0], 'Intercept': state_means[:, 1]}, index=data.index)
@@ -66,15 +68,19 @@ kf = KalmanFilter(n_dim_obs=1, n_dim_state=2,
                   initial_state_covariance=np.ones((2, 2)),           # initial value
                   transition_matrices=np.eye(2),                      # constant
                   observation_matrices=observation_matrix_stepwise,   # depend on x
-                  observation_covariance= 1,                           # constant
-                  transition_covariance= np.eye(2))                   # constant
+                  observation_covariance=observation_cov,                           # constant
+                  transition_covariance= np.eye(2)*state_cov_multiplier)                   # constant
+# P = np.ones((2, 2)) + np.eye(2)*state_cov_multiplier
+# spread = y - observation_matrix_stepwise.dot(np.ones(2))[0]
+# spread_std = np.sqrt(observation_matrix_stepwise.dot(P).dot(observation_matrix_stepwise.transpose())[0][0] + observation_cov)
+# print(spread, spread_std)
 state_means_stepwise, state_covs_stepwise = kf.filter(observation_stepwise)             # depend on y
-print(state_means_stepwise, state_covs_stepwise)
+# print(state_means_stepwise, state_covs_stepwise)
 means_trace.append(state_means_stepwise[0])
 covs_trace.append(state_covs_stepwise[0])
 
 for step in range(1, data.shape[0]):
-    print(step)
+    # print(step)
     x = data[sym_a][step]
     y = data[sym_b][step]
     observation_matrix_stepwise = np.array([[x, 1]])
@@ -85,7 +91,11 @@ for step in range(1, data.shape[0]):
         observation=observation_stepwise,
         observation_matrix=observation_matrix_stepwise)
 
-    print(state_means_stepwise, state_covs_stepwise)
+    # print(state_means_stepwise, state_covs_stepwise)
+    # P = covs_trace[-1] + np.eye(2)*state_cov_multiplier                        # This has to be small enough
+    # spread = y - observation_matrix_stepwise.dot(means_trace[-1])[0]
+    # spread_std = np.sqrt(observation_matrix_stepwise.dot(P).dot(observation_matrix_stepwise.transpose())[0][0] + observation_cov)
+    # print(spread, spread_std)
     means_trace.append(state_means_stepwise.data)
     covs_trace.append(state_covs_stepwise)
 

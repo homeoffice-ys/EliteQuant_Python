@@ -165,8 +165,8 @@ if __name__ == '__main__':
         # config_file = os.path.join(path, 'config_backtest_buy_hold.yaml')
         # config_file = os.path.join(path, 'config_backtest_moving_average_cross.yaml')
         # config_file = os.path.join(path, 'config_backtest_simple_linear_scaling.yaml')
-        config_file = os.path.join(path, 'config_backtest_mean_reversion_spread.yaml')
-        # config_file = os.path.join(path, 'config_backtest_kalman_filter_pairs_trading.yaml')
+        # config_file = os.path.join(path, 'config_backtest_mean_reversion_spread.yaml')
+        config_file = os.path.join(path, 'config_backtest_kalman_filter_pairs_trading.yaml')
         with open(os.path.expanduser(config_file)) as fd:
             config = yaml.load(fd)
     except IOError:

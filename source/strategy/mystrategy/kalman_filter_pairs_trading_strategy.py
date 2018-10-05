@@ -20,6 +20,9 @@ class KalmanFilterPairsTradingStrategy(StrategyBase):
         super(KalmanFilterPairsTradingStrategy, self).__init__(events_engine, data_board)
         self.symbols = ['EWA US Equity', 'EWC US Equity']
         self.bollinger_scaler = 1.0
+        self.state_cov_multiplier = np.power(0.01, 2)  # 0.1: spread_std=2.2, cov=16  ==> 0.01: 0.22, 0.16
+        self.observation_cov = 0.001
+
         self.current_ewa_size = 0
         self.current_ewc_size = 0
         self._kf = None                # Kalman Filter
@@ -39,27 +42,27 @@ class KalmanFilterPairsTradingStrategy(StrategyBase):
         spread_std = None
 
         if self._kf is None:
-           self._kf = KalmanFilter(n_dim_obs=1, n_dim_state=2,
+            self._kf = KalmanFilter(n_dim_obs=1, n_dim_state=2,
                               initial_state_mean=np.ones(2),  # initial value
-                              initial_state_covariance=np.zeros((2, 2)),  # initial value
+                              initial_state_covariance=np.ones((2, 2)),  # initial value
                               transition_matrices=np.eye(2),  # constant
                               observation_matrices=observation_matrix_stepwise,  # depend on x
-                              observation_covariance=0.001,  # constant
-                              transition_covariance=np.eye(2)*0.001)  # constant
-           P = np.zeros((2, 2)) + np.eye(2)*0.001
-           spread = y - observation_matrix_stepwise.dot(np.ones(2))[0]
-           spread_std = np.sqrt(observation_matrix_stepwise.dot(P).dot(observation_matrix_stepwise.transpose())[0][0] + 0.001)
-           state_means_stepwise, state_covs_stepwise = self._kf.filter(observation_stepwise)  # depend on y
-           self._current_state_means = state_means_stepwise[0]
-           self._current_state_covs = state_covs_stepwise[0]
+                              observation_covariance=self.observation_cov,  # constant
+                              transition_covariance=np.eye(2) * self.state_cov_multiplier)  # constant
+            P = np.ones((2, 2)) + np.eye(2)*self.state_cov_multiplier
+            spread = y - observation_matrix_stepwise.dot(np.ones(2))[0]
+            spread_std = np.sqrt(observation_matrix_stepwise.dot(P).dot(observation_matrix_stepwise.transpose())[0][0] + self.observation_cov)
+            state_means_stepwise, state_covs_stepwise = self._kf.filter(observation_stepwise)  # depend on y
+            self._current_state_means = state_means_stepwise[0]
+            self._current_state_covs = state_covs_stepwise[0]
         else:
             state_means_stepwise, state_covs_stepwise = self._kf.filter_update(
                 self._current_state_means, self._current_state_covs,
                 observation=observation_stepwise,
                 observation_matrix=observation_matrix_stepwise)
-            P = self._current_state_covs + np.eye(2)*0.001
+            P = self._current_state_covs + np.eye(2)*self.state_cov_multiplier                        # This has to be small enough
             spread = y - observation_matrix_stepwise.dot(self._current_state_means)[0]
-            spread_std = np.sqrt(observation_matrix_stepwise.dot(P).dot(observation_matrix_stepwise.transpose())[0][0] + 0.001)
+            spread_std = np.sqrt(observation_matrix_stepwise.dot(P).dot(observation_matrix_stepwise.transpose())[0][0] + self.observation_cov)
             self._current_state_means = state_means_stepwise
             self._current_state_covs = state_covs_stepwise
 

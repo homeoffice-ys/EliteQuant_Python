@@ -3,11 +3,12 @@
 from source.strategy.mystrategy import strategy_list
 
 class StrategyManager(object):
-    def __init__(self, config_client, outgoing_request_event_engine, order_manager, portfolio_manager):
+    def __init__(self, config_client, outgoing_request_event_engine, order_manager, portfolio_manager, data_board):
         self._config_client = config_client
         self._outgoing_request_event_engine = outgoing_request_event_engine
         self._order_manager = order_manager    # get sid from
         self._portfolio_manager = portfolio_manager
+        self._data_board = data_board
         self._strategy_id = 1
         self._strategy_dict = {}            # strategy_id ==> strategy
         # there could be more than one strategy that subscribes to a symbol
@@ -26,7 +27,7 @@ class StrategyManager(object):
             if not strategyClass:
                 print(u'can not find strategy：%s' % s)
             else:
-                strategy = strategyClass(self._outgoing_request_event_engine)
+                strategy = strategyClass(self._outgoing_request_event_engine, self._data_board)
                 strategy.id = self._strategy_id
                 strategy.name = s          # assign class name to the strategy
 

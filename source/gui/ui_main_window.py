@@ -73,7 +73,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.portfolio_manager = PortfolioManager(self._config_client['initial_cash'])
 
         ## 4. strategy_manager
-        self._strategy_manager = StrategyManager(self._config_client, self._outgoing_request_events_engine,self._order_manager,self.portfolio_manager)
+        self._strategy_manager = StrategyManager(self._config_client, self._outgoing_request_events_engine,self._order_manager,self.portfolio_manager, self._data_board)
         self._strategy_manager.load_strategy()
 
         ## 8. client mq

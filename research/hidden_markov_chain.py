@@ -7,7 +7,7 @@ import numpy as np
 from matplotlib import cm, pyplot as plt
 from matplotlib.dates import YearLocator, MonthLocator
 from datetime import datetime, date
-#from hmmlearn.hmm import GaussianHMM
+from hmmlearn.hmm import GaussianHMM
 
 #################################################### Viberti #####################################################
 # https://en.wikipedia.org/wiki/Viterbi_algorithm
@@ -65,42 +65,19 @@ viterbi(obs, states, start_p, trans_p, emit_p)
 
 #################################################### Data #####################################################
 # https://hmmlearn.readthedocs.io/en/latest/auto_examples/plot_hmm_stock_analysis.html
-hist_file = os.path.join('hist/', '%s.csv' % 'VIX Index')
+hist_file = os.path.join('hist/', '%s.csv' % 'SPX Index')
 spx_price = pd.read_csv(hist_file, header=0, parse_dates=True, sep=',', index_col=0)
 spx_price = spx_price['Close']
 spx_price.name = 'SPX Index'
-
-
-sym_a = 'SPX Index'
-hist_file = os.path.join('hist/', '%s.csv' % sym_a)
-spx_price = pd.read_csv(hist_file, header=0, parse_dates=True, sep=',', index_col=0)
-spx_price = spx_price['Close']
-spx_price.name = sym_a
 spx_ret = spx_price.shift(1)/ spx_price[1:] - 1
-
-sym_b = 'VIX Index'
-hist_file = os.path.join('hist/', '%s.csv' % sym_b)
-vix_price = pd.read_csv(hist_file, header=0, parse_dates=True, sep=',', index_col=0)
-vix_price = vix_price['Close']
-vix_price.name = sym_b
-
-data = pd.concat([spx_ret, vix_price], axis=1)
-# print(data[data.isnull().any(axis=1)])
-data.dropna(axis=0, how='any',inplace=True)
-
-rets = np.column_stack([data['SPX Index'], data['VIX Index']])
-
-# spx_ret = spx_price.shift(1)/ spx_price[1:] - 1
-# spx_ret = spx_ret.rolling(100).mean()
-# spx_ret = spx_price
-# spx_ret.dropna(inplace=True)
-# #spx_ret = spx_ret * 1000.0
-# rets = np.column_stack([spx_ret])
+spx_ret.dropna(inplace=True)
+#spx_ret = spx_ret * 1000.0
+rets = np.column_stack([spx_ret])
 
 # Create the Gaussian Hidden markov Model and fit it
 # to the SPY returns data, outputting a score
 hmm_model = GaussianHMM(
-    n_components=4,                     # number of states
+    n_components=3,                     # number of states
     covariance_type="full",             # full covariance matrix vs diagonal
     n_iter=1000                         # number of iterations
 ).fit(rets)
@@ -122,7 +99,6 @@ for i in range(hmm_model.n_components):                   # 0 is down, 1 is up
     print("mean = ", hmm_model.means_[i])
     print("var = ", np.diag(hmm_model.covars_[i]))
 
-spx_ret = data['SPX Index']
 fig, axs = plt.subplots(hmm_model.n_components, sharex=True, sharey=True)
 colours = cm.rainbow(np.linspace(0, 1, hmm_model.n_components))
 for i, (ax, colour) in enumerate(zip(axs, colours)):

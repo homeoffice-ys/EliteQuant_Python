@@ -408,10 +408,7 @@ with tf.Session() as sess:
 # ----------------------------------------- Stock LSTM ---------------------------------------------------- #
 # https://www.kaggle.com/raoulma/ny-stock-price-prediction-rnn-lstm-gru/notebook
 # https://medium.com/@alexrachnog/neural-networks-for-algorithmic-trading-part-one-simple-time-series-forecasting-f992daa1045a
-# https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/  <-- borrow words
-# https://towardsdatascience.com/neural-networks-to-predict-the-market-c4861b649371 <- words
 # https://www.analyticsvidhya.com/blog/2018/10/predicting-stock-price-machine-learningnd-deep-learning-techniques-python/ <-- for arima, ols
-# https://www.altumintelligence.com/articles/a/Time-Series-Prediction-Using-LSTM-Deep-Neural-Networks  <-- return normalization
 import numpy as np
 import pandas as pd
 import math

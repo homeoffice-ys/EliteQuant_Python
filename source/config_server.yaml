@@ -1,14 +1,14 @@
 #------------------ System Setting --------------#
 accounts:    # accounts active for trading
-  - 107957 
-  #- DU15057
+  #- 107957
+  - DU15092
 msgq: nanomsg           # nanomsg kafka, zmq
 log_dir: d:/workspace/elitequant_python/log
 data_dir: d:/workspace/elitequant_python/data
 #------------------ End of System ---------------#
 
 #-------------- Interactive Brokers -------------#
-DU15057:
+DU15092:
   broker: IB                 # IB CTP SINA, GOOGLE, PAPER
   api: IB
   port: 7497

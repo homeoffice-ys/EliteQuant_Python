@@ -114,7 +114,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.statusBar().showMessage(message)
 
     def open_proj_folder(self):
-        webbrowser.open('d:/workspace/elitequant_python/')
+        webbrowser.open('/home/office/Documents/EliteQuant_Python.git/')
 
     def place_order(self):
         s = str(self.sym.text())

@@ -3,8 +3,8 @@ accounts:    # accounts active for trading
   #- 107957
   - DU15092
 msgq: nanomsg           # nanomsg kafka, zmq
-log_dir: d:/workspace/elitequant_python/log
-data_dir: d:/workspace/elitequant_python/data
+log_dir: /home/office/Documents/EliteQuant_Python.gitlog
+data_dir: /home/office/Documents/EliteQuant_Python.git/data
 #------------------ End of System ---------------#
 
 #-------------- Interactive Brokers -------------#

@@ -18,6 +18,7 @@ from source.performance.performance_manager import PerformanceManager
 from source.risk.risk_manager import PassThroughRiskManager
 from source.strategy.mystrategy import strategy_list
 
+#
 class BacktestEngine(object):
     """
     Event driven backtest engine

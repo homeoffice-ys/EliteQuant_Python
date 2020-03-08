@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5bd3fc2-38fe-46f0-ac33-3bcf0bb4493c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/pythontrader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/pythontrader.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/backtest_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/backtest_engine.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/backtest_optimization_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/backtest_optimization_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/config_backtest_buy_hold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_buy_hold.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/config_backtest_kalman_filter_pairs_trading.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_kalman_filter_pairs_trading.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/config_backtest_simple_linear_scaling.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_simple_linear_scaling.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/config_server.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_server.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/gui/ui_main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/gui/ui_main_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/config_backtest_mean_reversion_spread.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_mean_reversion_spread.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/config_backtest_moving_average_cross.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_moving_average_cross.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,169 +15,20 @@
   <component name="FavoritesManager">
     <favorites_list name="pythontrader" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/backtest_engine.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2370">
-              <caret line="183" column="25" lean-forward="true" selection-start-line="183" selection-start-column="25" selection-end-line="183" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/backtest_optimization_engine.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="37" column="70" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/config_backtest_kalman_filter_pairs_trading.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/config_backtest_simple_linear_scaling.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/gui/ui_main_window.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="116" column="69" selection-start-line="116" selection-start-column="69" selection-end-line="116" selection-end-column="69" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/config_backtest_buy_hold.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/config_server.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/data/backtest_data_feed_local_multiple_symbols.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="67" selection-start-line="67" selection-end-line="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
-              <caret line="404" selection-start-line="404" selection-end-line="404" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/research/rnn_stock_prediction.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1920">
-              <caret line="131" selection-start-line="131" selection-end-line="131" />
-              <folding>
-                <element signature="e#46#64#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>d:/workspace</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/source/backtest_optimization_engine.py" />
-        <option value="$PROJECT_DIR$/source/config_backtest_buy_hold.yaml" />
-        <option value="$PROJECT_DIR$/source/config_backtest_kalman_filter_pairs_trading.yaml" />
-        <option value="$PROJECT_DIR$/source/config_backtest_simple_linear_scaling.yaml" />
-        <option value="$PROJECT_DIR$/source/config_server.yaml" />
-        <option value="$PROJECT_DIR$/source/gui/ui_main_window.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="EliteQuant_Python.git" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EliteQuant_Python.git" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EliteQuant_Python.git" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EliteQuant_Python.git" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EliteQuant_Python.git" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EliteQuant_Python.git" type="462c0819:PsiDirectoryNode" />
-              <item name="source" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1Xx3P2zW3occuqPATcSbB7GNcvd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/source/backtest_engine.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.backtest_optimization_engine">
     <configuration name="backtest_engine" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="pythontrader" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,13 +50,66 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="backtest_optimization_engine" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythontrader" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/source/backtest_optimization_engine.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="kalman_filter_linear_regression" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pythontrader" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/research" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/research/kalman_filter_linear_regression.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.backtest_engine" />
+      <item itemvalue="Python.backtest_optimization_engine" />
+      <item itemvalue="Python.kalman_filter_linear_regression" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.backtest_optimization_engine" />
+        <item itemvalue="Python.kalman_filter_linear_regression" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6e8e2ffa-2fec-4792-91a8-436244b04f88" name="Default" comment="" />
+      <changelist id="e5bd3fc2-38fe-46f0-ac33-3bcf0bb4493c" name="Default Changelist" comment="" />
       <created>1493737816204</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -219,29 +117,40 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1301" height="743" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2488263" />
-      <window_info id="Structure" order="1" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.33403805" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3306189" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.35480464" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32980973" />
-      <window_info anchor="bottom" id="Python Console" order="9" weight="0.43196544" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Data View" order="3" />
-    </layout>
+  <component name="WindowStateProjectService">
+    <state x="211" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583706897849">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state x="211" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog/67.27.1373.873@67.27.1373.873" timestamp="1583706897849" />
+    <state x="592" y="262" width="374" height="402" key="FileChooserDialogImpl" timestamp="1583706895423">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state x="592" y="262" width="374" height="402" key="FileChooserDialogImpl/67.27.1373.873@67.27.1373.873" timestamp="1583706895423" />
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1581979482006" />
+    <state width="1350" height="219" key="GridCell.Tab.0.bottom" timestamp="1583708790232">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state width="1350" height="219" key="GridCell.Tab.0.bottom/67.27.1373.873@67.27.1373.873" timestamp="1583708790232" />
+    <state width="1350" height="219" key="GridCell.Tab.0.center" timestamp="1583708790231">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state width="1350" height="219" key="GridCell.Tab.0.center/67.27.1373.873@67.27.1373.873" timestamp="1583708790231" />
+    <state width="1350" height="219" key="GridCell.Tab.0.left" timestamp="1583708790231">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state width="1350" height="219" key="GridCell.Tab.0.left/67.27.1373.873@67.27.1373.873" timestamp="1583708790231" />
+    <state width="1350" height="219" key="GridCell.Tab.0.right" timestamp="1583708790232">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state width="1350" height="219" key="GridCell.Tab.0.right/67.27.1373.873@67.27.1373.873" timestamp="1583708790232" />
+    <state x="242" y="97" key="SettingsEditor" timestamp="1583706788537">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state x="242" y="97" key="SettingsEditor/67.27.1373.873@67.27.1373.873" timestamp="1583706788537" />
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1581977329232">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1581977329232" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -253,80 +162,5 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/io/parsers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="404" selection-start-line="404" selection-end-line="404" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/research/deep_learning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="410" column="140" selection-start-line="410" selection-start-column="140" selection-end-line="410" selection-end-column="140" />
-          <folding>
-            <element signature="e#46#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/backtest_engine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2370">
-          <caret line="183" column="25" lean-forward="true" selection-start-line="183" selection-start-column="25" selection-end-line="183" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/backtest_optimization_engine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="37" column="70" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/config_backtest_buy_hold.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/config_backtest_kalman_filter_pairs_trading.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/config_backtest_simple_linear_scaling.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/config_server.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/gui/ui_main_window.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="116" column="69" selection-start-line="116" selection-start-column="69" selection-end-line="116" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/data/backtest_data_feed_local_multiple_symbols.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

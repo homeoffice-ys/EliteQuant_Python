@@ -35,10 +35,10 @@ if __name__ == '__main__':
     config['end_date'] = date(2017, 5, 1)
     config['datasource'] = 'local'
     # config['hist_dir'] = 'd:/workspace/elitequant_python/hist/'
-    config['hist_dir'] = '/home/office/Documents/EliteQuant_Python.git/hist/'
+    config['hist_dir'] = '//home/office/Documents/EliteQuant_Python/hist/'
     config['batch_tag'] = '0'
     # config['output_dir'] = 'd:/workspace/elitequant_python/out/'
-    config['output_dir'] ='/home/office/Documents/EliteQuant_Python.git/out'
+    config['output_dir'] ='//home/office/Documents/EliteQuant_Python/out'
     # strategy specific
     config['strategy'] = 'MovingAverageCrossStrategy'
     config['symbols'] = ['SPX Index']

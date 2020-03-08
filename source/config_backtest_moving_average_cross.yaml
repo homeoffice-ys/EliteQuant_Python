@@ -10,8 +10,8 @@ params:
   short_window: 50      # dict
   long_window: 100
 datasource: local   # local, quandl, tushare
-hist_dir: d:/workspace/elitequant_python/hist/
-output_dir: d:/workspace/elitequant_python/out/
+hist_dir: /home/office/Documents/EliteQuant_Python/hist/
+output_dir: /home/office/Documents/EliteQuant_Python/out/
 fvp_file:           # FUT_VAL_PT, for example stocks = 1; CLA Comdty is 1000
 #---- used by optimization engine ----------#
 batch_tag:

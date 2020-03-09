@@ -8,8 +8,8 @@ start_date: 2006-01-01
 end_date: 2018-08-30
 params:
 datasource: local   # local, multi_local, quandl, tushare
-hist_dir: /home/office/Documents/EliteQuant_Python.git/hist/
-output_dir: /home/office/Documents/EliteQuant_Python.git/out/
+hist_dir: /home/office/Documents/EliteQuant_Python/hist/
+output_dir: /home/office/Documents/EliteQuant_Python/out/
 fvp_file:          # FUT_VAL_PT, for example stocks = 1; CLA Comdty is 1000
 #---- used by optimization engine ----------#
 batch_tag:

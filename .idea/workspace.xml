@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="e5bd3fc2-38fe-46f0-ac33-3bcf0bb4493c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/positions_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/positions_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/positions_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/positions_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/positions_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/positions_2.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/trades_0.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/trades_0.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/trades_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/trades_1.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/trades_2.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/trades_2.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/source/backtest_optimization_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/source/backtest_optimization_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/config_backtest_mean_reversion_spread.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_mean_reversion_spread.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/config_backtest_moving_average_cross.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_moving_average_cross.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/config_backtest_buy_hold.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_buy_hold.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/config_backtest_kalman_filter_pairs_trading.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/source/config_backtest_kalman_filter_pairs_trading.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,38 +133,55 @@
     </state>
     <state x="592" y="262" width="374" height="402" key="FileChooserDialogImpl/67.27.1373.873@67.27.1373.873" timestamp="1583706895423" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1581979482006" />
-    <state width="1350" height="219" key="GridCell.Tab.0.bottom" timestamp="1583708790232">
+    <state width="1350" height="219" key="GridCell.Tab.0.bottom" timestamp="1583718342696">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
-    <state width="1350" height="219" key="GridCell.Tab.0.bottom/67.27.1373.873@67.27.1373.873" timestamp="1583708790232" />
-    <state width="1350" height="219" key="GridCell.Tab.0.center" timestamp="1583708790231">
+    <state width="1350" height="219" key="GridCell.Tab.0.bottom/67.27.1373.873@67.27.1373.873" timestamp="1583718342696" />
+    <state width="1350" height="219" key="GridCell.Tab.0.center" timestamp="1583718342695">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
-    <state width="1350" height="219" key="GridCell.Tab.0.center/67.27.1373.873@67.27.1373.873" timestamp="1583708790231" />
-    <state width="1350" height="219" key="GridCell.Tab.0.left" timestamp="1583708790231">
+    <state width="1350" height="219" key="GridCell.Tab.0.center/67.27.1373.873@67.27.1373.873" timestamp="1583718342695" />
+    <state width="1350" height="219" key="GridCell.Tab.0.left" timestamp="1583718342695">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
-    <state width="1350" height="219" key="GridCell.Tab.0.left/67.27.1373.873@67.27.1373.873" timestamp="1583708790231" />
-    <state width="1350" height="219" key="GridCell.Tab.0.right" timestamp="1583708790232">
+    <state width="1350" height="219" key="GridCell.Tab.0.left/67.27.1373.873@67.27.1373.873" timestamp="1583718342695" />
+    <state width="1350" height="219" key="GridCell.Tab.0.right" timestamp="1583718342696">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
-    <state width="1350" height="219" key="GridCell.Tab.0.right/67.27.1373.873@67.27.1373.873" timestamp="1583708790232" />
+    <state width="1350" height="219" key="GridCell.Tab.0.right/67.27.1373.873@67.27.1373.873" timestamp="1583718342696" />
+    <state width="1350" height="290" key="GridCell.Tab.1.bottom" timestamp="1583715292886">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state width="1350" height="290" key="GridCell.Tab.1.bottom/67.27.1373.873@67.27.1373.873" timestamp="1583715292886" />
+    <state width="1350" height="290" key="GridCell.Tab.1.center" timestamp="1583715292886">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state width="1350" height="290" key="GridCell.Tab.1.center/67.27.1373.873@67.27.1373.873" timestamp="1583715292886" />
+    <state width="1350" height="290" key="GridCell.Tab.1.left" timestamp="1583715292886">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state width="1350" height="290" key="GridCell.Tab.1.left/67.27.1373.873@67.27.1373.873" timestamp="1583715292885" />
+    <state width="1350" height="290" key="GridCell.Tab.1.right" timestamp="1583715292886">
+      <screen x="67" y="27" width="1373" height="873" />
+    </state>
+    <state width="1350" height="290" key="GridCell.Tab.1.right/67.27.1373.873@67.27.1373.873" timestamp="1583715292886" />
     <state x="242" y="97" key="SettingsEditor" timestamp="1583706788537">
       <screen x="67" y="27" width="1373" height="873" />
     </state>
     <state x="242" y="97" key="SettingsEditor/67.27.1373.873@67.27.1373.873" timestamp="1583706788537" />
-    <state x="649" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1581977329232">
-      <screen x="67" y="27" width="1853" height="1053" />
+    <state x="498" y="320" key="com.intellij.ide.util.TipDialog" timestamp="1583710595549">
+      <screen x="67" y="27" width="1373" height="873" />
     </state>
+    <state x="498" y="320" key="com.intellij.ide.util.TipDialog/67.27.1373.873@67.27.1373.873" timestamp="1583710595549" />
     <state x="649" y="380" key="com.intellij.ide.util.TipDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1581977329232" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/source/backtest_engine.py</url>
-          <line>2</line>
-          <option name="timeStamp" value="283" />
+          <url>file://$PROJECT_DIR$/source/backtest_optimization_engine.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="284" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

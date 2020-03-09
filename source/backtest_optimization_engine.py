@@ -17,8 +17,9 @@ def optimize(config, target_name):
     results = backtest.run(tear_sheet=False)
 
     try:
-        #target_value = results[target_name]
-        target_value = results.loc[target_name][0]
+        # target_value = results[target_name]
+        # target_value = results.loc[target_name][0]
+        target_value = results[0].loc[target_name][0]
     except KeyError:
         target_value = 0
     return (config, target_value, results)
@@ -31,45 +32,45 @@ if __name__ == '__main__':
     config['root_multiplier'] = None
     config['fvp_file'] = None
     config['start_date'] = date(2010, 1, 1)
-    config['end_date'] = datetime.today().date()
+    # config['end_date'] = datetime.today().date()
     config['end_date'] = date(2017, 5, 1)
     config['datasource'] = 'local'
     # config['hist_dir'] = 'd:/workspace/elitequant_python/hist/'
-    config['hist_dir'] = '//home/office/Documents/EliteQuant_Python/hist/'
+    config['hist_dir'] = '/home/office/Documents/EliteQuant_Python/hist/'
     config['batch_tag'] = '0'
     # config['output_dir'] = 'd:/workspace/elitequant_python/out/'
-    config['output_dir'] ='//home/office/Documents/EliteQuant_Python/out'
+    config['output_dir'] ='/home/office/Documents/EliteQuant_Python/out'
     # strategy specific
     config['strategy'] = 'MovingAverageCrossStrategy'
     config['symbols'] = ['SPX Index']
 
     # you can use for loop to construct params list in code
     params_list = []
-    for sw in [10, 20, 30, 40, 50]:
-        for lw in [10, 20, 30, 40, 50]:
+    for sw in [50, 75, 100, 125, 150]:
+        for lw in [50, 75, 100, 125, 150]:
             if lw <= sw:
                 continue
-            params_list.append({'short_window':sw, 'long_window': lw})
+            params_list.append({'short_window': sw, 'long_window': lw})
 
     config['params_list'] = params_list
 
-    params_list = [{'short_window':10, 'long_window': 20},
-                   {'short_window': 10, 'long_window': 30},
-                   {'short_window': 10, 'long_window': 50},
-                   {'short_window': 20, 'long_window': 30},
-                   {'short_window': 20, 'long_window': 50}]
+    # params_list = [{'short_window': 10, 'long_window': 20},
+    #                {'short_window': 10, 'long_window': 30},
+    #                {'short_window': 10, 'long_window': 50},
+    #                {'short_window': 20, 'long_window': 30},
+    #                {'short_window': 20, 'long_window': 50}]
     # ------------------------ End of set up config in code ---------------------------#
 
     # ------------------------ Or read from config file -----------------------------------#
-    config = None
-    try:
-        path = os.path.abspath(os.path.dirname(__file__))
-        config_file = os.path.join(path, 'config_backtest_moving_average_cross.yaml')
-        # config_file = os.path.join(path, 'config_backtest_mean_reversion_spread.yaml')
-        with open(os.path.expanduser(config_file)) as fd:
-            config = yaml.load(fd)
-    except IOError:
-        print("config.yaml is missing")
+    # config = None
+    # try:
+    #     path = os.path.abspath(os.path.dirname(__file__))
+    #     config_file = os.path.join(path, 'config_backtest_moving_average_cross.yaml')
+    #     # config_file = os.path.join(path, 'config_backtest_mean_reversion_spread.yaml')
+    #     with open(os.path.expanduser(config_file)) as fd:
+    #         config = yaml.load(fd)
+    # except IOError:
+    #     print("config.yaml is missing")
     # ----------------------- End of reading from config file ------------------------------#
 
     target_name = 'Sharpe ratio'
